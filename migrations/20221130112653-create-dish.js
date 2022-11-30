@@ -25,6 +25,10 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      imageUrl: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       listIngredients: {
         type: Sequelize.JSON,
         allowNull: false,
