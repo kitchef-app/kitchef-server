@@ -2,47 +2,38 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Dishes", {
+    await queryInterface.createTable("Drivers", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      fullName: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      CategoryId: {
-        type: Sequelize.INTEGER,
+      username: {
+        type: Sequelize.STRING,
         allowNull: false,
-        references: {
-          model: "Categories",
-          key: "id",
-        },
       },
-      videoUrl: {
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      address: {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      description: {
-        type: Sequelize.TEXT,
-        allowNull: false,
+      location: {
+        type: Sequelize.GEOMETRY,
       },
-      imageUrl: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      listIngredients: {
-        type: Sequelize.JSON,
-        allowNull: false,
-      },
-      listTools: {
-        type: Sequelize.JSON,
-        allowNull: false,
-      },
-      steps: {
-        type: Sequelize.JSON,
+      phoneNumber: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       createdAt: {
@@ -56,6 +47,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Dishes");
+    await queryInterface.dropTable("Drivers");
   },
 };

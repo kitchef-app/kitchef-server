@@ -17,9 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       CategoryId: DataTypes.STRING,
       videoUrl: DataTypes.TEXT,
       imageUrl: DataTypes.TEXT,
+      description: DataTypes.TEXT,
       listIngredients: DataTypes.JSON,
       listTools: DataTypes.JSON,
-      step: DataTypes.JSON,
+      steps: DataTypes.JSON,
     },
     {
       sequelize,
