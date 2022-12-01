@@ -1,0 +1,662 @@
+[
+  {
+    "id": 1,
+    "name": "Gudeg Sehat",
+    "CategoryId": 1,
+    "videoUrl": "https://www.youtube.com/watch?v=Ofkv5fOqtOY",
+    "description": "Gudeg sehat dengan bumbu yang sedikit. Namun hasilnya tetap tidak kalah dengan gudeg asli",
+    "imageUrl": "https://kbu-cdn.com/dk/wp-content/uploads/gudeg-jogja.jpg",
+    "listIngredients": [
+      {
+        "name": "50 gram Fiber creme"
+      },
+      {
+        "name": "250 gram nangka muda, potong-potong dan rebus"
+      },
+      {
+        "name": "750 ml air"
+      },
+      {
+        "name": "4 lembar daun salam"
+      },
+      {
+        "name": "2 cm lengkuas, memarkan"
+      },
+      {
+        "name": "80 gram gula merah"
+      },
+      {
+        "name": "1 kantung teh celup"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Blender"
+      },
+      {
+        "name": "Wajan"
+      },
+      {
+        "name": "Kuas"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Siapkan nangka muda yang sudah direbus, sisihkan"
+      },
+      {
+        "name": "Blender semua bahan bumbu hingga halus, sisihkan"
+      },
+      {
+        "name": "Tata daun salam di dasar wajan. Lalu masukkan nangka, teh celup dan lengkuas ke dalam wajan"
+      },
+      {
+        "name": "Kemudian tuang air dan bumbu halus, aduk-aduk"
+      },
+      {
+        "name": "Tambahkan gula merah lalu masak hingga mendidih dan nangka empuk, kemudian tuang larutan fiber creme dan koreksi rasa. Masak hingga kuah nangka mulai menyusut dan bumbu meresap. Angkat dan sajikan "
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Sup Daging Tahu Sutra",
+    "CategoryId": 1,
+    "videoUrl": "https://www.youtube.com/watch?v=6RboTu6O3IU",
+    "description": "Sup yang sangat nikmat dan hangat di badan dengan daging yang lembut",
+    "imageUrl": "https://sweetrip.id/wp-content/uploads/2022/08/sup-tahu-sutra-bola-daging.jpg",
+    "listIngredients": [
+      {
+        "name": "100 gram daging sapi giling"
+      },
+      {
+        "name": "4 buah tahu sutra, potong dadu"
+      },
+      {
+        "name": "3 siung bawang putih, cacah halus"
+      },
+      {
+        "name": "1/2 siung bawang bombay, cacah kasar"
+      },
+      {
+        "name": "2cm jahe, cacah halus"
+      },
+      {
+        "name": "1 sdm kecap manis"
+      },
+      {
+        "name": "1 sdm saus tiram"
+      },
+      {
+        "name": "1 sdm minyak wijen"
+      },
+      {
+        "name": "1 sdm tepung maizena, larutkan dengan sedikit air"
+      },
+      {
+        "name": "600ml air"
+      },
+      {
+        "name": "Secukupnya gula, garam, merica dan kaldu blok sapi"
+      },
+      {
+        "name": "1 batang daun bawang, potong-potong besar"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Blender"
+      },
+      {
+        "name": "Wajan"
+      },
+      {
+        "name": "Kuas"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Siapkan bahan yang kita perlukan"
+      },
+      {
+        "name": "Panaskan minyak, tumis bawang dan jahe sampai harum"
+      },
+      {
+        "name": "Masukkan daging giling, aduk sampai berubah warna"
+      },
+      {
+        "name": "Tambahkan air, tunggu sampai mendidih"
+      },
+      {
+        "name": "Masukkan tahu, aduk perlahan agar tahu tidak hancur. Tambahkan kecap manis dan saus tiram"
+      },
+      {
+        "name": "Tuang larutan maizena, aduk sampai mengental. Beri minyak wijen, garam, gula, merica bubuk dan kaldu. Test rasa"
+      },
+      {
+        "name": "Tambahkan daun bawang. Sajikan"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Tahu Walik Lebaran",
+    "CategoryId": 4,
+    "videoUrl": "https://www.youtube.com/watch?v=_7WINMHIMLE",
+    "description": "Tahu walik yang enak dan renyah diselimuti dengan mie",
+    "imageUrl": "https://asset.kompas.com/crops/fqxcaVsDHzhQG9WMaRmnE3PF4is=/3x0:700x465/750x500/data/photo/2020/08/22/5f40f89caf153.jpg",
+    "listIngredients": [
+      {
+        "name": "2 bungkus mie instan"
+      },
+      {
+        "name": "2 butir telur"
+      },
+      {
+        "name": "1 batang daun bawang, iris"
+      },
+      {
+        "name": "2 sdm tepung terigu"
+      },
+      {
+        "name": "15pcs tahu pong, goreng"
+      },
+      {
+        "name": "Minyak goreng"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Garpu"
+      },
+      {
+        "name": "Sendok"
+      },
+      {
+        "name": "Panci"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Didihkan air dalam panci, rebus mie selama 3 menit hingga mie matang dan tiriskan"
+      },
+      {
+        "name": "Masukkan bumbu ke dalam wadah, masukkan mie yang telah direbus, daun bawang, telur, dan tepung terigu. Aduk menggunakan garpu hingga merata"
+      },
+      {
+        "name": "Siapkan tahu yang telah digoreng. Belah tengahnya dan tekan bagian dalam"
+      },
+      {
+        "name": "Isi tahu dengan campuran mie instan hingga penuh"
+      },
+      {
+        "name": "Panaskan minyak dalam frying pan, goreng tahu walik isi mie hingga kecoklatan dan matang. Sajikan"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Soto Gombrang",
+    "CategoryId": 1,
+    "videoUrl": "https://www.youtube.com/watch?v=mtquKPOsyEw",
+    "description": "Soto dengan kenikmatan yang luar biasa. Kaldu yang mantap menemani hari mu",
+    "imageUrl": "https://img-global.cpcdn.com/recipes/ccfd6d58c31bc481/1200x630cq70/photo.jpg",
+    "listIngredients": [
+      {
+        "name": "500 gram daging sapi"
+      },
+      {
+        "name": "1500 ml air"
+      },
+      {
+        "name": "60 gram serundeng, tumbuk"
+      },
+      {
+        "name": "2 batang serai"
+      },
+      {
+        "name": "1 ruas lengkuas"
+      },
+      {
+        "name": "2 lembar daun jeruk"
+      },
+      {
+        "name": "1 sdm tauco"
+      },
+      {
+        "name": "1 sdt ketumbar bubuk"
+      },
+      {
+        "name": "8 buah cabai rawit merah"
+      },
+      {
+        "name": "1 sdt lada bubuk"
+      },
+      {
+        "name": "1 sdt garam"
+      },
+      {
+        "name": "1 sdm minyak kelapa"
+      },
+      {
+        "name": "10 siung bawang merah, tumbuk"
+      },
+      {
+        "name": "6 siung bawang putih, tumbuk"
+      },
+      {
+        "name": "2 ruas kunyit, tumbuk"
+      },
+      {
+        "name": "10 ruas jahe, tumbuk"
+      },
+      {
+        "name": "3 buah kluwek, tumbuk"
+      },
+      {
+        "name": "3 buah kemiri, tumbuk"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Garpu"
+      },
+      {
+        "name": "Sendok"
+      },
+      {
+        "name": "Panci"
+      },
+      {
+        "name": "Kuas"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Rebus daging dalam air mendidih, lalu buang kotoran lemaknya. Bisa juga diganti dengan air rebusan baru"
+      },
+      {
+        "name": "Masukkan daun salam, daun jeruk dan lengkuas. Rebus hingga daging empuk"
+      },
+      {
+        "name": "Haluskan bumbu, lalu tumis hingga harum"
+      },
+      {
+        "name": "Masukkan serai, ketumbar dan lada bubuk. Lalu tambahkan tauco"
+      },
+      {
+        "name": "Tuang ke dalam rebusan daging, lalu masuk hingga bumbu meresap"
+      },
+      {
+        "name": "Tambahkan cabai rawit dan serundeng, lalu cicipi rasanya. Kemudian sajikan bersama bawang goreng"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Kue Lumpur Labu",
+    "CategoryId": 2,
+    "videoUrl": "https://www.youtube.com/watch?v=FVpTFyo_SDU",
+    "description": "Kue dengan rasa labu yang lezat dan bergizi. Manisnya pas menemani hari panas mu",
+    "imageUrl": "https://asset.kompas.com/crops/fqxcaVsDHzhQG9WMaRmnE3PF4is=/3x0:700x465/750x500/data/photo/2020/08/22/5f40f89caf153.jpg",
+    "listIngredients": [
+      {
+        "name": "400 gram labu parang, iris"
+      },
+      {
+        "name": "250 gram tepung terigu"
+      },
+      {
+        "name": "150 gram gula pasir"
+      },
+      {
+        "name": "2 butir telur"
+      },
+      {
+        "name": "1 butir kuning telur"
+      },
+      {
+        "name": "1 sdt garam"
+      },
+      {
+        "name": "500 ml krimer nabati"
+      },
+      {
+        "name": "70 gram mentega, lelehkan"
+      },
+      {
+        "name": "50 gram kismis"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Spatula"
+      },
+      {
+        "name": "Kompor"
+      },
+      {
+        "name": "Garpu"
+      },
+      {
+        "name": "Loyang"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Kukus labu kuning yang telah diiris selama 15 menit dengan api sedang. Masak hingga labu matang dan lunak. Lalu haluskan menggunakan garpu"
+      },
+      {
+        "name": "Campurkan telur, gula dan garam ke dalam wadah, lalu campurkan dengan mixer hingga mengembang"
+      },
+      {
+        "name": "Tambahkan tepung terigu ke dalam adonan, aduk aduk dengan spatula. Tambahkan labu kuning yang telah dihaluskan, krimer nabati dan mentega leleh. Aduk kembali dengan spatula hingga merata"
+      },
+      {
+        "name": "Saring adonan kue lumpur untuk menghindari gumpalan dan serat dari labu"
+      },
+      {
+        "name": "Siapkan loyang di atas kompor, olesi dengan sedikit minyak. Tuangkan adonan kue lumpur dan masak dengan api kecil hingga setengah matang. Buka tutup loyang, tambahkan kismis dan masak kembali hingga matang. Siap disajikan"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Masans Fuyunghai",
+    "CategoryId": 5,
+    "videoUrl": "https://www.youtube.com/watch?v=3NSzFDIyCek",
+    "description": "Masakan terbuat dari telur yang enak dan luar bisa rasanya ",
+    "imageUrl": "https://img.kurio.network/W7YrogQG0kHUy45qtYoH2DZU7tY=/320x320/filters:quality(80)/https://kurio-img.kurioapps.com/21/09/30/5312f5e9-89fb-457b-a537-4e481e21223f.jpe",
+    "listIngredients": [
+      {
+        "name": "2 sdm tepung terigu"
+      },
+      {
+        "name": "2 butir telur"
+      },
+      {
+        "name": "1 batang daun bawang"
+      },
+      {
+        "name": "1 buah wortel"
+      },
+      {
+        "name": "1/4 buah kol"
+      },
+      {
+        "name": "2-3 sdm air"
+      },
+      {
+        "name": "Kaldu bubuk, merica, minyak goreng secukupnya"
+      },
+      {
+        "name": "1 siung bawang putih, digrepek"
+      },
+      {
+        "name": "2 sdm saus tomat"
+      },
+      {
+        "name": "1/2 sdm saus tiram"
+      },
+      {
+        "name": "Merica, kaldu bubuk, 100 ml air, larutan maizena, minyak goreng secukupnya"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Piring"
+      },
+      {
+        "name": "Wajan"
+      },
+      {
+        "name": "Spatulla"
+      },
+      {
+        "name": "Piring Saji"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Cuci bersih dan rajang-rajang sayuran, kemudian tumis dengan sedikit minyak hingga layu, sisipkan"
+      },
+      {
+        "name": "Campur tepung terigu, telur, kaldu bubuk dan merica, aduk merata"
+      },
+      {
+        "name": "Masukkan sayuran, kemudian tambahkan air, aduk hingga tidak ada tepung yang bergerindil"
+      },
+      {
+        "name": "Panaskan wajan, goreng adonan fuyunghai hingga matang, tiriskan"
+      },
+      {
+        "name": "Untuk sausnya, tumis bawang putih hingga harum kemudian tambahkan air"
+      },
+      {
+        "name": "Masukkan saus tomat, saus tiram, merica dan kaldu bubuk, masak hingga mendidih, cicipi"
+      },
+      {
+        "name": "Untuk  mengentalkannya tambahkan larutan maizena secukupnya sambil terus aduk"
+      },
+      {
+        "name": "Sajikan fuyunghai diatas piring, potong sesuai selera"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Es Cendol Sehat",
+    "CategoryId": 5,
+    "videoUrl": "https://www.youtube.com/watch?v=BLlLDxOmMUI",
+    "description": "Kesegarannya tiada tara. Cocok menemani di siang hari nan panas ",
+    "imageUrl": "https://img.kurio.network/DyBH3GLSuurfi3_0kf0QkOLhmkY=/320x320/filters:quality(80)/https://kurio-img.kurioapps.com/21/06/16/e15d1837-b57b-438e-9eef-dcb569370193.jpe",
+    "listIngredients": [
+      {
+        "name": "1 sachet nutrijel plain"
+      },
+      {
+        "name": "6 sdm tepung beras"
+      },
+      {
+        "name": "1/4 sdt garam"
+      },
+      {
+        "name": "100 ml air"
+      },
+      {
+        "name": "Pewarna makanan hijau"
+      },
+      {
+        "name": "Es Batu secukupnya"
+      },
+      {
+        "name": "200 ml santan kelapa"
+      },
+      {
+        "name": "1/4 sdt vanilli bubuk"
+      },
+      {
+        "name": "1 lembar daun salam"
+      },
+      {
+        "name": "1 ons gula merah"
+      },
+      {
+        "name": "1 lembar daun pandan"
+      },
+      {
+        "name": "200 ml air"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Wajan"
+      },
+      {
+        "name": "Piring"
+      },
+      {
+        "name": "Panci"
+      },
+      {
+        "name": "Gelas"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Siapkan bahan untuk membuat cendol"
+      },
+      {
+        "name": "Masukkan semua bahan dalam wajan. Aduk merata"
+      },
+      {
+        "name": "Nyalakan api kecil, masak sampai membentuk adonan mengental dan meletup, sambil aduk terus"
+      },
+      {
+        "name": "Siapkan es batu. Masukkan adonan yang sudah jadi kedalam plastik segitiga. Tekan plastik berisi adonan kedalam wadah berisi es batu."
+      },
+      {
+        "name": "Diamkan sebentar sampai adonan jadi. Sisihkan"
+      },
+      {
+        "name": "Siapkan bahan unuk membuah kuah santan"
+      },
+      {
+        "name": "Masukkan semua bahan. Masak dengan api kecil sambil diaduk. Angkat dan sisihkan"
+      },
+      {
+        "name": "Siapkan bahan untuk membuat kuah kinca gula merah"
+      },
+      {
+        "name": "Masukkan semua bahan dalam panci masak dengan api kecil sambil diaduk terus, agar gula larut. Saring jika hasil akhir terdapat gumpalan dari gula. Lalu siap disajikan"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Aci Telor",
+    "CategoryId": 4,
+    "videoUrl": "https://www.youtube.com/watch?v=xYr7a5W5h2c",
+    "description": "Cocok menemani mu ketika sedang nongkrong atau nonton. Rasakan kenyal dan gurihnya",
+    "imageUrl": "data:image/jpeg;base64,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",
+    "listIngredients": [
+      {
+        "name": "5 sdm tepung tapioka"
+      },
+      {
+        "name": "7 sdm air"
+      },
+      {
+        "name": "1 butir telur"
+      },
+      {
+        "name": "1 sdm chili oil"
+      },
+      {
+        "name": "1/2 sdt kaldu bubuk"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Wajan"
+      },
+      {
+        "name": "Piring"
+      },
+      {
+        "name": "Tusukan bambu"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Masukkan chili oil"
+      },
+      {
+        "name": "Masukkan tepung tapioka dan kaldu bubuk"
+      },
+      {
+        "name": "Tambahkan air, lalu aduk sampai rata"
+      },
+      {
+        "name": "Panaskan wajan, lalu buat telur orak arik."
+      },
+      {
+        "name": "Masukkan adonan aci"
+      },
+      {
+        "name": "Aduk-adk, masak menggunakan api dan sajikan"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Burger Ala Yummy",
+    "CategoryId": 6,
+    "videoUrl": "https://www.youtube.com/watch?v=gPoAPYLfLFw",
+    "description": "Masih ada daging sisa? Cobain deh bikin burger ala rumahan",
+    "imageUrl": "https://awsimages.detik.net.id/community/media/visual/2021/06/29/resep-burger-keju-mini-1_43.jpeg?w=700&q=90",
+    "listIngredients": [
+      {
+        "name": "8 pcs roti bun"
+      },
+      {
+        "name": "500 gram daging giling"
+      },
+      {
+        "name": "4 sdm tepung roti"
+      },
+      {
+        "name": "1 butir telur"
+      },
+      {
+        "name": "1/2 bawang bombay, cincang halus"
+      },
+      {
+        "name": "4 siung bawang putih, cincang halus"
+      },
+      {
+        "name": "1/2 sdm kecap inggris"
+      },
+      {
+        "name": "1 sdm kaldu jamur"
+      },
+      {
+        "name": "Garam, lada, mentega secukupnya"
+      },
+      {
+        "name": "Selada, Potongan Tomat, Saus Samba, Mayonnaise"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Piring"
+      },
+      {
+        "name": "Piring Saji"
+      },
+      {
+        "name": "Teflon"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Siapkan bahan bahan"
+      },
+      {
+        "name": "Campur daging giling dengan cincangan bawang putih dan bawang bombay, lalu masukkan lada hitam, kecap inggris, kaldu jamur, gula pasir, garam, dan lada secukupnya. Kemudian aduk merata"
+      },
+      {
+        "name": "Tambahkan tepung roti serta telyr, lalu aduk merata"
+      },
+      {
+        "name": "Bentuklah adonan dengan bentuk bulat"
+      },
+      {
+        "name": "Lelhkan sediit margarin, lalu panggang menggunakan partty daging bolak balik hingga berubah warna atau matang. Kemudian angkat  dan sisihkan. Oleskan mentega secara tipis pada permukaan roti bun, lalu panggang sebentar diatas teflon. Lalu angkat"
+      },
+      {
+        "name": "Tata roti bun pada piring saji, taruh selada diatasnya dan tambahkan patty daging serta potongan tomat. Siram dengan saus tomat dan mayonnaise, lalu taruh kembaku roti bu. Siap disajikan"
+      }
+    ]
+  }
+]

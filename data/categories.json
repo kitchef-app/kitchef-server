@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "name" : "Masakan Indonesia",
+        "imageUrl" : "https://img-global.cpcdn.com/recipes/fc61c7ff25651d8e/312x200cq70/photo.jpg"
+    },
+    {
+        "id": 2,
+        "name" : "Kue",
+        "imageUrl" : "https://img-global.cpcdn.com/recipes/4ed9ce52cfc86222/312x200cq70/photo.jpg"
+    },
+    {
+        "id": 3,
+        "name" : "Minuman",
+        "imageUrl" : "https://img-global.cpcdn.com/recipes/0d34a1220757848a/312x200cq70/photo.jpg"
+    },
+    {
+        "id": 4,
+        "name" : "Cemilan",
+        "imageUrl" : "https://img-global.cpcdn.com/recipes/36b0a2ff9efbad82/312x200cq70/photo.jpg"
+    },
+    {
+        "id": 5,
+        "name" : "Masakan Internasional",
+        "imageUrl" : "https://img-global.cpcdn.com/recipes/c2e8eb590e6b5eed/312x200cq70/photo.jpg"
+    },
+    {
+        "id": 6,
+        "name" : "Cepat Saji",
+        "imageUrl" : "https://d1sag4ddilekf6.azureedge.net/cuisine/62/icons/FastFood_4710e425c3d24db2aa4280aa207a22d3_1547819143037208832.jpg"
+    }
+    
+]
