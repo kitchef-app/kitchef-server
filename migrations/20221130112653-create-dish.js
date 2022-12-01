@@ -25,6 +25,10 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      description: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       imageUrl: {
         type: Sequelize.TEXT,
         allowNull: false,
@@ -37,7 +41,7 @@ module.exports = {
         type: Sequelize.JSON,
         allowNull: false,
       },
-      step: {
+      steps: {
         type: Sequelize.JSON,
         allowNull: false,
       },

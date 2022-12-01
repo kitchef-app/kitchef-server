@@ -1,0 +1,197 @@
+[
+  {
+    "id": 1,
+    "name": "Gudeg Sehat",
+    "CategoryId": 1,
+    "videoUrl": "https://www.youtube.com/watch?v=Ofkv5fOqtOY",
+    "description": "Gudeg sehat dengan bumbu yang sedikit. Namun hasilnya tetap tidak kalah dengan gudeg asli",
+    "imageUrl": "https://kbu-cdn.com/dk/wp-content/uploads/gudeg-jogja.jpg",
+    "listIngredients": [
+      {
+        "name": "50 gram Fiber creme"
+      },
+      {
+        "name": "250 gram nangka muda, potong-potong dan rebus"
+      },
+      {
+        "name": "750 ml air"
+      },
+      {
+        "name": "4 lembar daun salam"
+      },
+      {
+        "name": "2 cm lengkuas, memarkan"
+      },
+      {
+        "name": "80 gram gula merah"
+      },
+      {
+        "name": "1 kantung teh celup"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Blender"
+      },
+      {
+        "name": "Wajan"
+      },
+      {
+        "name": "Kuas"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Siapkan nangka muda yang sudah direbus, sisihkan"
+      },
+      {
+        "name": "Blender semua bahan bumbu hingga halus, sisihkan"
+      },
+      {
+        "name": "Tata daun salam di dasar wajan. Lalu masukkan nangka, teh celup dan lengkuas ke dalam wajan"
+      },
+      {
+        "name": "Kemudian tuang air dan bumbu halus, aduk-aduk"
+      },
+      {
+        "name": "Tambahkan gula merah lalu masak hingga mendidih dan nangka empuk, kemudian tuang larutan fiber creme dan koreksi rasa. Masak hingga kuah nangka mulai menyusut dan bumbu meresap. Angkat dan sajikan "
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Sup Daging Tahu Sutra",
+    "CategoryId": 1,
+    "videoUrl": "https://www.youtube.com/watch?v=6RboTu6O3IU",
+    "description": "Sup yang sangat nikmat dan hangat di badan dengan daging yang lembut",
+    "imageUrl": "https://sweetrip.id/wp-content/uploads/2022/08/sup-tahu-sutra-bola-daging.jpg",
+    "listIngredients": [
+      {
+        "name": "100 gram daging sapi giling"
+      },
+      {
+        "name": "4 buah tahu sutra, potong dadu"
+      },
+      {
+        "name": "3 siung bawang putih, cacah halus"
+      },
+      {
+        "name": "1/2 siung bawang bombay, cacah kasar"
+      },
+      {
+        "name": "2cm jahe, cacah halus"
+      },
+      {
+        "name": "1 sdm kecap manis"
+      },
+      {
+        "name": "1 sdm saus tiram"
+      },
+      {
+        "name": "1 sdm minyak wijen"
+      },
+      {
+        "name": "1 sdm tepung maizena, larutkan dengan sedikit air"
+      },
+      {
+        "name": "600ml air"
+      },
+      {
+        "name": "Secukupnya gula, garam, merica dan kaldu blok sapi"
+      },
+      {
+        "name": "1 batang daun bawang, potong-potong besar"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Blender"
+      },
+      {
+        "name": "Wajan"
+      },
+      {
+        "name": "Kuas"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Siapkan bahan yang kita perlukan"
+      },
+      {
+        "name": "Panaskan minyak, tumis bawang dan jahe sampai harum"
+      },
+      {
+        "name": "Masukkan daging giling, aduk sampai berubah warna"
+      },
+      {
+        "name": "Tambahkan air, tunggu sampai mendidih"
+      },
+      {
+        "name": "Masukkan tahu, aduk perlahan agar tahu tidak hancur. Tambahkan kecap manis dan saus tiram"
+      },
+      {
+        "name": "Tuang larutan maizena, aduk sampai mengental. Beri minyak wijen, garam, gula, merica bubuk dan kaldu. Test rasa"
+      },
+      {
+        "name": "Tambahkan daun bawang. Sajikan"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Tahu Walik Lebaran",
+    "CategoryId": 4,
+    "videoUrl": "https://www.youtube.com/watch?v=_7WINMHIMLE",
+    "description": "Tahu walik yang enak dan renyah diselimuti dengan mie",
+    "imageUrl": "https://asset.kompas.com/crops/fqxcaVsDHzhQG9WMaRmnE3PF4is=/3x0:700x465/750x500/data/photo/2020/08/22/5f40f89caf153.jpg",
+    "listIngredients": [
+      {
+        "name": "2 bungkus mie instan"
+      },
+      {
+        "name": "2 butir telur"
+      },
+      {
+        "name": "1 batang daun bawang, iris"
+      },
+      {
+        "name": "2 sdm tepung terigu"
+      },
+      {
+        "name": "15pcs tahu pong, goreng"
+      },
+      {
+        "name": "Minyak goreng"
+      }
+    ],
+    "listTools": [
+      {
+        "name": "Garpu"
+      },
+      {
+        "name": "Sendok"
+      },
+      {
+        "name": "Panci"
+      }
+    ],
+    "steps": [
+      {
+        "name": "Didihkan air dalam panci, rebus mie selama 3 menit hingga mie matang dan tiriskan"
+      },
+      {
+        "name": "Masukkan bumbu ke dalam wadah, masukkan mie yang telah direbus, daun bawang, telur, dan tepung terigu. Aduk menggunakan garpu hingga merata"
+      },
+      {
+        "name": "Siapkan tahu yang telah digoreng. Belah tengahnya dan tekan bagian dalam"
+      },
+      {
+        "name": "Isi tahu dengan campuran mie instan hingga penuh"
+      },
+      {
+        "name": "Panaskan minyak dalam frying pan, goreng tahu walik isi mie hingga kecoklatan dan matang. Sajikan"
+      }
+    ]
+  }
+]
