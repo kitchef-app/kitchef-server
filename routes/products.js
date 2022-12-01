@@ -1,7 +1,7 @@
+const ProductController = require("../controllers/product");
+
 const router = require("express").Router();
 
-router.get("/", (req, res, next) => {
-  res.send("hello World ini products");
-});
+router.get("/", ProductController.readAllProduct);
 
 module.exports = router;
