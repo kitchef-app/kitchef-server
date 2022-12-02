@@ -1,4 +1,4 @@
-const { User, Sequelize } = require("../models/index");
+const { User, Driver, Sequelize } = require("../models/index");
 
 class Controller {
   static getUserById(req, res, next) {
@@ -56,16 +56,29 @@ class Controller {
   }
 
   static async userRegister(req, res, next) {
-    const { fullName, username, email, password, address, phoneNumber, longitude = 0, latitude = 0 } = req.body;
+    // console.log("ihza");
+    const {
+      fullName,
+      username,
+      email,
+      password,
+      address,
+      phoneNumber,
+      longitude = 0,
+      latitude = 0,
+    } = req.body;
     let role = "user";
     try {
-      const createdUser = await User.create({
+      const createdUser = await Driver.create({
         fullName,
         username,
         email,
         password,
         role,
-        location: Sequelize.fn("ST_GeomFromText", `POINT(${latitude} ${longitude})`),
+        location: Sequelize.fn(
+          "ST_GeomFromText",
+          `POINT(${latitude} ${longitude})`
+        ),
         phoneNumber,
         address,
       });

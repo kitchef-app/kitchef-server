@@ -7,8 +7,10 @@ const Controller = require("../controllers/invoiceController");
 
 router.post("/", Controller.addInvoice);
 
-router.get("/:userId", Controller.getInvoiceByUserId);
+router.get("/:UserId", Controller.getInvoiceByUserId);
 
-router.get("/:driverId", Controller.getInvoiceByDriverId);
+router.get("/driver/:DriverId", Controller.getInvoiceByDriverId);
+
+router.post("/", Controller.addInvoice);
 
 module.exports = router;
