@@ -21,9 +21,12 @@ class Controller {
   static async addInvoice(req, res, next) {
     const { UserId, DriverId, total, subTotal, shippingCost, cart } = req.body;
     const isPaid = "belum";
+    const isDelivered = "none";
     const invoice = await Invoice.create({
       UserId,
       DriverId,
+      isPaid,
+      isDelivered,
       total,
       subTotal,
       shippingCost,
@@ -48,6 +51,40 @@ class Controller {
     await Invoice.update(
       {
         isPaid: "Complete",
+      },
+      { where: { id } }
+    );
+
+    res.status(200).json("Invoice Success update");
+
+    try {
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async changeStatusDeliverInvoice(req, res, next) {
+    const { id } = req.params;
+
+    await Invoice.update(
+      {
+        isDelivered: "Complete",
+      },
+      { where: { id } }
+    );
+
+    res.status(200).json("Invoice Success update");
+
+    try {
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async changeStatusDeliverOngoingInvoice(req, res, next) {
+    const { id } = req.params;
+
+    await Invoice.update(
+      {
+        isDelivered: "Ongoing",
       },
       { where: { id } }
     );

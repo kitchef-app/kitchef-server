@@ -6,6 +6,7 @@ class Controller {
       const data = await Dish.findAll({ where: { CategoryId } });
       res.status(200).json(data);
     } catch (error) {
+      console.log(error);
       next(error);
     }
   }

@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       DriverId: DataTypes.INTEGER,
       total: DataTypes.INTEGER,
       isPaid: DataTypes.STRING,
+      isDelivered: DataTypes.STRING,
       subTotal: DataTypes.INTEGER,
       shippingCost: DataTypes.INTEGER,
     },
