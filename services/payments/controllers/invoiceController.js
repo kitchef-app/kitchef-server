@@ -19,14 +19,12 @@ class Controller {
     }
   }
   static async addInvoice(req, res, next) {
-    const { UserId, DriverId, total, isPaid, subTotal, shippingCost, cart } =
-      req.body;
-
+    const { UserId, DriverId, total, subTotal, shippingCost, cart } = req.body;
+    const isPaid = "belum";
     const invoice = await Invoice.create({
       UserId,
       DriverId,
       total,
-      isPaid,
       subTotal,
       shippingCost,
     });
@@ -37,12 +35,24 @@ class Controller {
 
     await InvoiceProduct.bulkCreate(cart);
 
-    await Log.create({
-      UserId,
-      messageNotification: "Pesananmu siap dikirim",
-    });
-
     res.status(200).json("Invoice Success Create");
+
+    try {
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async changeStatusInvoice(req, res, next) {
+    const { id } = req.params;
+    await Invoice.update(
+      {
+        isPaid: "Complete",
+      },
+      { where: { id } }
+    );
+
+    res.status(200).json("Invoice Success update");
 
     try {
     } catch (error) {

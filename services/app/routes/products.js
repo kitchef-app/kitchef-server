@@ -6,5 +6,6 @@ const Controller = require("../controllers/productController");
 // });
 
 router.get("/", Controller.getProduct);
+router.put("/stok/:id", Controller.editStock);
 
 module.exports = router;
