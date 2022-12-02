@@ -7,7 +7,7 @@ const Controller = require("../controllers/invoiceController");
 
 router.post("/", Controller.addInvoice);
 router.put("/statusPaid/:id", Controller.changeStatusInvoice);
-router.put("/statusDeliveredComplete/:id", Controller.changeStatusInvoice);
+router.put("/statusDeliveredComplete/:id", Controller.changeStatusDeliverInvoice);
 
 router.get("/users/:UserId", Controller.getInvoiceByUserId);
 

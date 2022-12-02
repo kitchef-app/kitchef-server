@@ -6,7 +6,6 @@ const Controller = require("../controllers/userController");
 // });
 
 router.post("/register", Controller.userRegister);
-router.post("/driver/register", Controller.driverRegister);
 
 router.post("/login", Controller.userLogin);
 
