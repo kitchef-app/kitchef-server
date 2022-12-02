@@ -1,4 +1,4 @@
-const { User } = require("../models/index");
+const { User, Sequelize } = require("../models/index");
 
 class Controller {
   static getUserById(req, res, next) {
@@ -54,8 +54,9 @@ class Controller {
       next(error);
     }
   }
+
   static async userRegister(req, res, next) {
-    const { fullName, username, email, password, address, location, phoneNumber } = req.body;
+    const { fullName, username, email, password, address, phoneNumber, longitude = 0, latitude = 0 } = req.body;
     let role = "user";
     try {
       const createdUser = await User.create({
@@ -64,7 +65,7 @@ class Controller {
         email,
         password,
         role,
-        location,
+        location: Sequelize.fn("ST_GeomFromText", `POINT(${latitude} ${longitude})`),
         phoneNumber,
         address,
       });
@@ -80,6 +81,7 @@ class Controller {
 
   static async findUserById(req, res, next) {
     const { id } = req.params;
+    console.log(req.params);
     try {
       const user = await User.findByPk(id);
 
