@@ -69,6 +69,42 @@ class Controller {
     } = req.body;
     let role = "user";
     try {
+      const createdUser = await User.create({
+        fullName,
+        username,
+        email,
+        password,
+        role,
+        location: Sequelize.fn(
+          "ST_GeomFromText",
+          `POINT(${latitude} ${longitude})`
+        ),
+        phoneNumber,
+        address,
+      });
+      res.status(201).json({
+        id: createdUser.id,
+        email: createdUser.email,
+      });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+  static async driverRegister(req, res, next) {
+    // console.log("ihza");
+    const {
+      fullName,
+      username,
+      email,
+      password,
+      address,
+      phoneNumber,
+      longitude = 0,
+      latitude = 0,
+    } = req.body;
+    let role = "user";
+    try {
       const createdUser = await Driver.create({
         fullName,
         username,
