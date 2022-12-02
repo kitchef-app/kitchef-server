@@ -2,38 +2,34 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Drivers", {
+    await queryInterface.createTable("Invoices", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      fullName: {
+      UserId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      DriverId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      total: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      isPaid: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      username: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      subTotal: {
+        type: Sequelize.INTEGER,
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      password: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      address: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      location: {
-        type: Sequelize.GEOMETRY,
-      },
-      phoneNumber: {
-        type: Sequelize.STRING,
+      shippingCost: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       createdAt: {
@@ -47,6 +43,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Drivers");
+    await queryInterface.dropTable("Invoices");
   },
 };
