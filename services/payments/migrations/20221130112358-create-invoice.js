@@ -25,6 +25,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      isDelivered: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       subTotal: {
         type: Sequelize.INTEGER,
       },

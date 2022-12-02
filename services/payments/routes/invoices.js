@@ -6,7 +6,12 @@ const Controller = require("../controllers/invoiceController");
 // });
 
 router.post("/", Controller.addInvoice);
-router.put("/status/:id", Controller.changeStatusInvoice);
+router.put("/statusPaid/:id", Controller.changeStatusInvoice);
+router.put("/statusDeliveredComplete/:id", Controller.changeStatusInvoice);
+router.put(
+  "/statusDeliveredOngoing/:id",
+  Controller.changeStatusDeliverOngoingInvoice
+);
 
 router.get("/:UserId", Controller.getInvoiceByUserId);
 
