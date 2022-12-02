@@ -3,28 +3,29 @@ const { comparedPassword } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
 
 class Controller {
-  static async userLogin(req, res, next) {
+  static async driverLogin(req, res, next) {
     const { email, password } = req.body;
+    console.log(email, password)
     try {
       console.log("masuk login pub");
       if (!email || !password) {
         throw { name: "bad_request_login" };
       }
-      const foundUser = await User.findOne({
+      const foundDriver = await Driver.findOne({
         where: {
           email,
         },
       });
 
-      // console.log(foundUser, "dari controller pub");
+      // console.log(foundDriver, "dari controller pub");
 
-      if (!foundUser) {
+      if (!foundDriver) {
         throw { name: "invalid_credentials" };
       }
 
-      const comparePassword = comparedPassword(password, foundUser.password);
+      const comparePassword = comparedPassword(password, foundDriver.password);
 
-      // if (foundUser.role !== "user") {
+      // if (foundDriver.role !== "Driver") {
       //   throw { name: "invalid_log_role" };
       // }
 
@@ -33,17 +34,17 @@ class Controller {
       }
 
       const payload = {
-        id: foundUser.id,
+        id: foundDriver.id,
       };
 
       const token = createToken(payload);
 
       res.status(200).json({
         access_token: token,
-        email: foundUser.email,
-        role: foundUser.role,
-        username: foundUser.username,
-        id: foundUser.id,
+        email: foundDriver.email,
+        role: foundDriver.role,
+        username: foundDriver.username,
+        id: foundDriver.id,
       });
     } catch (error) {
       console.log(error);
@@ -51,35 +52,24 @@ class Controller {
     }
   }
 
-  static async userRegister(req, res, next) {
-    const {
-      fullName,
-      username,
-      email,
-      password,
-      address,
-      phoneNumber,
-      longitude = 0,
-      latitude = 0,
-    } = req.body;
+  static async driverRegister(req, res, next) {
+    // console.log("ihza");
+    const { fullName, username, email, password, address, phoneNumber, longitude = 0, latitude = 0 } = req.body;
     let role = "user";
     try {
-      const createdUser = await User.create({
+      const createdDriver = await Driver.create({
         fullName,
         username,
         email,
         password,
         role,
-        location: Sequelize.fn(
-          "ST_GeomFromText",
-          `POINT(${latitude} ${longitude})`
-        ),
+        location: Sequelize.fn("ST_GeomFromText", `POINT(${latitude} ${longitude})`),
         phoneNumber,
         address,
       });
       res.status(201).json({
-        id: createdUser.id,
-        email: createdUser.email,
+        id: createdDriver.id,
+        email: createdDriver.email,
       });
     } catch (error) {
       console.log(error);
@@ -87,14 +77,14 @@ class Controller {
     }
   }
 
-  static async findUserById(req, res, next) {
+  static async findDriverById(req, res, next) {
     const { id } = req.params;
     try {
-      const user = await User.findByPk(id);
+      const driver = await Driver.findByPk(id);
 
-      if (!user) throw { name: "DATA_NOT_FOUND", data: "user", id };
+      if (!driver) throw { name: "DATA_NOT_FOUND", data: "driver", id };
 
-      res.status(200).json(user);
+      res.status(200).json(driver);
     } catch (error) {
       next(error);
     }

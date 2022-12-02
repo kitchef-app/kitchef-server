@@ -10,6 +10,6 @@ router.post("/driver/register", Controller.driverRegister);
 
 router.post("/login", Controller.userLogin);
 
-router.get("/:id", Controller.getUserById);
+router.get("/:id", Controller.findUserById);
 
 module.exports = router;
