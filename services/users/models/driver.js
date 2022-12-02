@@ -1,7 +1,6 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
+const { hashPassword } = require("../helpers/bcrypt");
 module.exports = (sequelize, DataTypes) => {
   class Driver extends Model {
     /**
@@ -13,17 +12,24 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Driver.init({
-    fullName: DataTypes.STRING,
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    address: DataTypes.TEXT,
-    location: DataTypes.GEOMETRY,
-    phoneNumber: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Driver',
+  Driver.init(
+    {
+      fullName: DataTypes.STRING,
+      username: DataTypes.STRING,
+      email: DataTypes.STRING,
+      password: DataTypes.STRING,
+      address: DataTypes.TEXT,
+      location: DataTypes.GEOMETRY,
+      phoneNumber: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Driver",
+    }
+  );
+  Driver.beforeCreate((driver, options) => {
+    driver.password = hashPassword(driver.password);
   });
+
   return Driver;
 };
