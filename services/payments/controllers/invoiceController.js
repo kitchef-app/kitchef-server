@@ -51,6 +51,7 @@ class Controller {
     await Invoice.update(
       {
         isPaid: "Complete",
+        isDelivered: "Ongoing",
       },
       { where: { id } }
     );
@@ -68,23 +69,6 @@ class Controller {
     await Invoice.update(
       {
         isDelivered: "Complete",
-      },
-      { where: { id } }
-    );
-
-    res.status(200).json("Invoice Success update");
-
-    try {
-    } catch (error) {
-      next(error);
-    }
-  }
-  static async changeStatusDeliverOngoingInvoice(req, res, next) {
-    const { id } = req.params;
-
-    await Invoice.update(
-      {
-        isDelivered: "Ongoing",
       },
       { where: { id } }
     );
