@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Dish.belongsToMany(models.Product, { through: models.ProductDish });
     }
   }
   Dish.init(
