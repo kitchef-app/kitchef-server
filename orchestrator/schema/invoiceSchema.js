@@ -30,7 +30,6 @@ input InvoiceForm {
 }
 
 input cart{
-  InvoiceId:Int,
   ProductId:Int,
   total:Int
 }
