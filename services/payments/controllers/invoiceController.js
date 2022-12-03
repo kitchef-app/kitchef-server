@@ -3,7 +3,14 @@ class Controller {
   static async getInvoiceByUserId(req, res, next) {
     const { UserId } = req.params;
     try {
+      const cekid = await Invoice.findByPk(UserId);
+      // console.log(cekid);
+      if (!cekid) {
+        throw { name: "USER_NOT_FOUND" };
+      }
+
       const data = await Invoice.findAll({ where: { UserId } });
+
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
@@ -13,6 +20,12 @@ class Controller {
   static async getInvoiceByDriverId(req, res, next) {
     const { DriverId } = req.params;
     try {
+      const cekid = await Invoice.findByPk(DriverId);
+      // console.log(cekid);
+      if (!cekid) {
+        throw { name: "USER_NOT_FOUND" };
+      }
+
       const data = await Invoice.findAll({ where: { DriverId } });
       res.status(200).json(data);
     } catch (error) {
@@ -52,14 +65,17 @@ class Controller {
   static async changeStatusInvoice(req, res, next) {
     try {
       const { id } = req.params;
-      await Invoice.update(
+      const data = await Invoice.update(
         {
           isPaid: "Complete",
           isDelivered: "Ongoing",
         },
         { where: { id } }
       );
-
+      console.log(data);
+      if (data[0] === 0) {
+        throw { name: "INVOICE_NOT_FOUND" };
+      }
       res.status(200).json({ msg: "Invoice Success update" });
     } catch (error) {
       next(error);
@@ -69,15 +85,19 @@ class Controller {
     try {
       const { id } = req.params;
 
-      await Invoice.update(
+      const data = await Invoice.update(
         {
           isDelivered: "Complete",
         },
         { where: { id } }
       );
-
-      res.status(200).json("Invoice Success update");
+      if (data[0] === 0) {
+        throw { name: "INVOICE_NOT_FOUND" };
+      }
+      // console.log("galgal");
+      res.status(200).json({ msg: "Invoice Success update" });
     } catch (error) {
+      console.log(error);
       next(error);
     }
   }
