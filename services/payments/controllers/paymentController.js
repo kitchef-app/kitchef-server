@@ -8,6 +8,9 @@ class Controller {
       const { gross_amount } = req.body;
       // console.log(req.body);
       // console.log(new Date().toISOString());
+      if (gross_amount === 0 || !gross_amount) {
+        throw { name: "AMOUNT_CANNOT_EMPTY" };
+      }
       let payload = JSON.stringify({
         transaction_details: {
           order_id: `ORDER - ${new Date().toISOString()}`,
