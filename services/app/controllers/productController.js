@@ -11,9 +11,11 @@ class Controller {
   static async editStock(req, res, next) {
     const { id } = req.params;
     const { total } = req.body;
+    console.log(id, total, "hehehe");
     const data = await Product.findByPk(id);
     const stock = data.stock - total;
-    await Product.update({ where: { stock } });
+    console.log(stock, "ini stock");
+    await Product.update({ stock }, { where: { id } });
 
     res.status(200).json("berhasil di update");
     try {
