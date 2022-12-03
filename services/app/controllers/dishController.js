@@ -6,8 +6,6 @@ class Controller {
       const data = await Dish.findAll({ where: { CategoryId } });
       res.status(200).json(data);
     } catch (error) {
-      console.log(error);
-      next(error);
     }
   }
 
@@ -15,6 +13,9 @@ class Controller {
     const { id } = req.params;
     try {
       const data = await Dish.findByPk(id, { include: [Product] });
+
+      if (!data) throw { name: "DATA_NOT_FOUND", id, data: "data" };
+
       res.status(200).json(data);
     } catch (error) {
       next(error);
