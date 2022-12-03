@@ -55,7 +55,7 @@ class Controller {
 
       await InvoiceProduct.bulkCreate(cart);
 
-      res.status(201).json({ msg: "Invoice Success Create" });
+      res.status(201).json({ InvoiceId: invoice.id });
     } catch (error) {
       // console.log(error);
       next(error);

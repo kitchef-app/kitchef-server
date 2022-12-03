@@ -35,12 +35,18 @@ input cart{
   total:Int
 }
 
+type InvoiceId{
+  InvoiceId:Int
+}
+
+
 type Query {
   getInvoiceUser(UserId:ID): Invoice,
   getInvoiceDriver(DriverId:ID): Invoice,
 }
+
 type Mutation {
-  addInvoice(invoiceInput: InvoiceForm): String
+  addInvoice(invoiceInput: InvoiceForm): InvoiceId
   changeStatusInvoice(InvoiceId:ID): String
   changeStatusDeliveryInvoice(InvoiceDelId:ID): String
 }
@@ -52,7 +58,9 @@ const resolvers = {
       const { UserId } = args;
       console.log(args);
       try {
-        const { data } = await axios.get(`${paymentLocalhost}/invoices/users/${UserId}`);
+        const { data } = await axios.get(
+          `${paymentLocalhost}/invoices/users/${UserId}`
+        );
         return data;
       } catch (error) {
         console.log(error);
@@ -62,7 +70,9 @@ const resolvers = {
       const { DriverId } = args;
       console.log(args);
       try {
-        const { data } = await axios.get(`${paymentLocalhost}/invoices/drivers/${DriverId}`);
+        const { data } = await axios.get(
+          `${paymentLocalhost}/invoices/drivers/${DriverId}`
+        );
         return data;
       } catch (error) {
         console.log(error);
@@ -73,9 +83,12 @@ const resolvers = {
     addInvoice: async (_, args) => {
       const { invoiceInput } = args;
       try {
-        const { data } = await axios.post(`${paymentLocalhost}/invoices`, invoiceInput);
+        const { data } = await axios.post(
+          `${paymentLocalhost}/invoices`,
+          invoiceInput
+        );
 
-        return "Success adding invoice";
+        return data;
       } catch (error) {
         console.log(error);
       }
@@ -83,7 +96,9 @@ const resolvers = {
     changeStatusInvoice: async (_, args) => {
       const { InvoiceId } = args;
       try {
-        const { data } = await axios.put(`${paymentLocalhost}/invoices/statusPaid/${InvoiceId}`);
+        const { data } = await axios.put(
+          `${paymentLocalhost}/invoices/statusPaid/${InvoiceId}`
+        );
 
         return data;
       } catch (error) {
@@ -93,7 +108,9 @@ const resolvers = {
     changeStatusDeliveryInvoice: async (_, args) => {
       const { InvoiceDelId } = args;
       try {
-        const { data } = await axios.put(`${paymentLocalhost}/invoices/statusDeliveredComplete/${InvoiceDelId}`);
+        const { data } = await axios.put(
+          `${paymentLocalhost}/invoices/statusDeliveredComplete/${InvoiceDelId}`
+        );
 
         return data;
       } catch (error) {
