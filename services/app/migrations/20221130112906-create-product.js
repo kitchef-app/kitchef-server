@@ -11,23 +11,27 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       price: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       stock: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+      },
+      satuan: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       imageUrl: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
