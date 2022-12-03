@@ -20,6 +20,25 @@ type Dish {
   listTools: [Tools]
 }
 
+type DishDetail {
+  name: String,
+  CategoryId: Int,
+  videoUrl: String,
+  description: String,
+  imageUrl: String,
+  listIngredients: [Ingredients],
+  listTools: [Tools]
+  Products: [Product]
+} 
+
+type Product {
+  name: String,
+  price: Int,
+  stock: Int,
+  imageUrl: String,
+  description: String
+}
+
 type Tools {
   name: String
 }
@@ -31,6 +50,7 @@ type Ingredients {
 
 type Query {
   getDishes(CategoryId:ID): [Dish],
+  getDishesDetail(DishId:ID): DishDetail
 }
 `;
 
@@ -41,6 +61,16 @@ const resolvers = {
       console.log(args);
       try {
         const { data } = await axios.get(`${appLocalhost}/dishes?CategoryId=${CategoryId}`);
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    getDishesDetail: async (_, args) => {
+      const { DishId } = args;
+      console.log(args);
+      try {
+        const { data } = await axios.get(`${appLocalhost}/dishes/${DishId}`);
         return data;
       } catch (error) {
         console.log(error);

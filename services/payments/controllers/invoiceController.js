@@ -6,6 +6,7 @@ class Controller {
       const data = await Invoice.findAll({ where: { UserId } });
       res.status(200).json(data);
     } catch (error) {
+      console.log(error);
       next(error);
     }
   }
@@ -15,6 +16,7 @@ class Controller {
       const data = await Invoice.findAll({ where: { DriverId } });
       res.status(200).json(data);
     } catch (error) {
+      console.log(error);
       next(error);
     }
   }
@@ -31,10 +33,11 @@ class Controller {
       subTotal,
       shippingCost,
     });
+    console.log(cart);
     cart.forEach((el) => {
       el.InvoiceId = invoice.id;
     });
-    console.log(cart);
+    // console.log(cart);
 
     await InvoiceProduct.bulkCreate(cart);
 

@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "Fiber Creame",
+    "price": 2000,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/805d410a993c7e772683cd4d4af9034d",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 2,
+    "name": "Nangka Muda",
+    "price": 12000,
+    "stock": 10,
+    "satuan": "/500gram",
+    "imageUrl": "https://cf.shopee.co.id/file/73a039758847c87c60eca3023fc27046",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 3,
+    "name": "Daun Salam",
+    "price": 2500,
+    "stock": 10,
+    "satuan": "/pack",
+    "imageUrl": "https://cf.shopee.co.id/file/848ffce72c25d2aeef3442381bd57998",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 4,
+    "name": "Lengkuas",
+    "price": 2000,
+    "stock": 10,
+    "satuan": "/100gram",
+    "imageUrl": "https://cf.shopee.co.id/file/sg-11134201-22110-y0u2pvmllekv13",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 5,
+    "name": "Gula Merah",
+    "price": 12000,
+    "stock": 100,
+    "satuan": "/500gram",
+    "imageUrl": "https://cf.shopee.co.id/file/40fe1346085b29b61c2d809541f8fbed",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 6,
+    "name": "Teh Celup Sosro",
+    "price": 3000,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/436b3839e487fecc955dd97bd8ca5ae0",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 7,
+    "name": "Blender Cosmos",
+    "price": 120000,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/sg-11134201-22110-65l7caesqxjv51",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 8,
+    "name": "Wajan Teflon",
+    "price": 50000,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/da37e7bc24b416d8d6f37f2bcda1b463",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 9,
+    "name": "Kuas Masak",
+    "price": 900,
+    "stock": 100,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/a448171cb5018f5c3f2aedb652594949",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 10,
+    "name": "Daging Sapi",
+    "price": 32000,
+    "stock": 10,
+    "satuan": "/250gram",
+    "imageUrl": "https://cf.shopee.co.id/file/27c4a669ee89f80bfa6bb5605acce0e3",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 11,
+    "name": "Tahu Sutra",
+    "price": 7000,
+    "stock": 10,
+    "satuan": "/250gram",
+    "imageUrl": "https://cf.shopee.co.id/file/964719a575367a650674b7799ef21874",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 12,
+    "name": "Bawang Putih",
+    "price": 12000,
+    "stock": 10,
+    "satuan": "/250gram",
+    "imageUrl": "https://cf.shopee.co.id/file/a1b169e2a3444b0bf44f6071ad733de2",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 13,
+    "name": "Bawang Bombay",
+    "price": 13500,
+    "stock": 10,
+    "satuan": "/250gram",
+    "imageUrl": "https://cf.shopee.co.id/file/7fd2c2365795519436f7c587f3a04bdd",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 14,
+    "name": "Jahe Gajah",
+    "price": 9500,
+    "stock": 10,
+    "satuan": "/250gram",
+    "imageUrl": "https://cf.shopee.co.id/file/fdf0a07396127e6876d7227dcbbe727f",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 15,
+    "name": "Kecap Manis Abc",
+    "price": 7000,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/1c80286768eadc8e90d114a4d15f084b",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 16,
+    "name": "Saori Saos Tiram",
+    "price": 9000,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/sg-11134201-22110-wq27lcaocijv4d",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 17,
+    "name": "Wijen Raja Rasa",
+    "price": 5000,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/91793e517032cef4db97a56d46439d1b",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 18,
+    "name": "Maizenaku 150gram",
+    "price": 6000,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/ca5b49dfe789205e6d0143a9e1070a39",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 19,
+    "name": "Daun Bawang",
+    "price": 2500,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "https://cf.shopee.co.id/file/defab03ac0dfbce7de509825b499ba80",
+    "description": "blablablablabla"
+  },
+  {
+    "id": 1,
+    "name": "Fiber Creame",
+    "price": 2000,
+    "stock": 10,
+    "satuan": "/Pcs",
+    "imageUrl": "",
+    "description": "blablablablabla"
+  }
+]

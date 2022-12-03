@@ -1,0 +1,142 @@
+[
+  {
+    "ProductId": 1,
+    "DishId": 1
+  },
+  {
+    "ProductId": 2,
+    "DishId": 1
+  },
+  {
+    "ProductId": 3,
+    "DishId": 1
+  },
+  {
+    "ProductId": 4,
+    "DishId": 1
+  },
+  {
+    "ProductId": 5,
+    "DishId": 1
+  },
+  {
+    "ProductId": 6,
+    "DishId": 1
+  },
+  {
+    "ProductId": 7,
+    "DishId": 1
+  },
+  {
+    "ProductId": 8,
+    "DishId": 1
+  },
+  {
+    "ProductId": 9,
+    "DishId": 1
+  },
+  {
+    "ProductId": 10,
+    "DishId": 2
+  },
+  {
+    "ProductId": 11,
+    "DishId": 2
+  },
+  {
+    "ProductId": 12,
+    "DishId": 2
+  },
+  {
+    "ProductId": 13,
+    "DishId": 2
+  },
+  {
+    "ProductId": 14,
+    "DishId": 2
+  },
+  {
+    "ProductId": 15,
+    "DishId": 2
+  },
+  {
+    "ProductId": 16,
+    "DishId": 2
+  },
+  {
+    "ProductId": 17,
+    "DishId": 2
+  },
+  {
+    "ProductId": 18,
+    "DishId": 2
+  },
+  {
+    "ProductId": 19,
+    "DishId": 2
+  },
+  {
+    "ProductId": 7,
+    "DishId": 2
+  },
+  {
+    "ProductId": 8,
+    "DishId": 2
+  },
+  {
+    "ProductId": 9,
+    "DishId": 2
+  },
+  {
+    "ProductId": 10,
+    "DishId": 3
+  },
+  {
+    "ProductId": 11,
+    "DishId": 3
+  },
+  {
+    "ProductId": 13,
+    "DishId": 3
+  },
+  {
+    "ProductId": 13,
+    "DishId": 3
+  },
+  {
+    "ProductId": 14,
+    "DishId": 3
+  },
+  {
+    "ProductId": 15,
+    "DishId": 3
+  },
+  {
+    "ProductId": 16,
+    "DishId": 3
+  },
+  {
+    "ProductId": 17,
+    "DishId": 3
+  },
+  {
+    "ProductId": 18,
+    "DishId": 3
+  },
+  {
+    "ProductId": 19,
+    "DishId": 3
+  },
+  {
+    "ProductId": 7,
+    "DishId": 3
+  },
+  {
+    "ProductId": 8,
+    "DishId": 3
+  },
+  {
+    "ProductId": 9,
+    "DishId": 3
+  }
+]
