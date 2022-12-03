@@ -6,7 +6,6 @@ class Controller {
   static async userLogin(req, res, next) {
     const { email, password } = req.body;
     try {
-      console.log("masuk login pub");
       if (!email || !password) {
         throw { name: "bad_request_login" };
       }
@@ -52,28 +51,17 @@ class Controller {
   }
 
   static async userRegister(req, res, next) {
-    const {
-      fullName,
-      username,
-      email,
-      password,
-      address,
-      phoneNumber,
-      longitude = 0,
-      latitude = 0,
-    } = req.body;
+    const { fullName, username, email, password, address, phoneNumber, longitude = 0, latitude = 0 } = req.body;
     let role = "user";
     try {
+      if (longitude === 0 || latitude === 0 || !longitude || !latitude) throw { name: "INPUT_LOCATION" };
       const createdUser = await User.create({
         fullName,
         username,
         email,
         password,
         role,
-        location: Sequelize.fn(
-          "ST_GeomFromText",
-          `POINT(${latitude} ${longitude})`
-        ),
+        location: Sequelize.fn("ST_GeomFromText", `POINT(${latitude} ${longitude})`),
         phoneNumber,
         address,
       });

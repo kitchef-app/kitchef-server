@@ -5,7 +5,7 @@ const { createToken } = require("../helpers/jwt");
 class Controller {
   static async driverLogin(req, res, next) {
     const { email, password } = req.body;
-    console.log(email, password)
+    console.log(email, password);
     try {
       console.log("masuk login pub");
       if (!email || !password) {
@@ -53,16 +53,14 @@ class Controller {
   }
 
   static async driverRegister(req, res, next) {
-    // console.log("ihza");
     const { fullName, username, email, password, address, phoneNumber, longitude = 0, latitude = 0 } = req.body;
-    let role = "user";
     try {
+      if (longitude === 0 || latitude === 0 || !longitude || !latitude) throw { name: "INPUT_LOCATION" };
       const createdDriver = await Driver.create({
         fullName,
         username,
         email,
         password,
-        role,
         location: Sequelize.fn("ST_GeomFromText", `POINT(${latitude} ${longitude})`),
         phoneNumber,
         address,

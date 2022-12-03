@@ -7,7 +7,8 @@
     "start": "node app.js",
     "migrate": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "dev": "nodemon bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest --verbose --forceExit --runInBand --setTimeOut=1000 --coverage",
+    "db:test": "npx sequelize-cli --env test db:drop && npx sequelize-cli --env test db:create && npx sequelize-cli --env test db:migrate"
   },
   "keywords": [],
   "author": "",
