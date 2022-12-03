@@ -8,6 +8,9 @@ class Controller {
       const { gross_amount } = req.body;
       // console.log(req.body);
       // console.log(new Date().toISOString());
+      if (gross_amount === 0 || !gross_amount) {
+        throw { name: "AMOUNT_CANNOT_EMPTY" };
+      }
       let payload = JSON.stringify({
         transaction_details: {
           order_id: `ORDER - ${new Date().toISOString()}`,
@@ -21,18 +24,18 @@ class Controller {
       // console.log("bantalll");
       console.log(payload);
       const { data } = await axios.post(
-        "https://app.midtrans.com/snap/v1/transactions",
+        "https://app.sandbox.midtrans.com/snap/v1/transactions",
         payload,
         {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
             Authorization:
-              "Basic TWlkLXNlcnZlci04UWdzNlVwVE80Z3dwcGdkVWFzQmxIVTQ6",
+              "Basic U0ItTWlkLXNlcnZlci1qeUNjWDRHWWtVZEdVeFdYNzJmU0R6dU06",
           },
         }
       );
-      // console.log(data);
+      console.log(data);
       res.status(200).json(data);
     } catch (err) {
       console.log(err);

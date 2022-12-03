@@ -31,7 +31,10 @@ const resolvers = {
       const { paymentInput } = args;
       console.log(paymentInput);
       try {
-        const { data } = await axios.post(`${paymentLocalhost}/payment`, paymentInput);
+        const { data } = await axios.post(
+          `${paymentLocalhost}/payments`,
+          paymentInput
+        );
 
         console.log(data);
         return data;
