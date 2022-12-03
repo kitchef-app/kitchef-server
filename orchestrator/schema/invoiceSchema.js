@@ -46,8 +46,8 @@ type Query {
 
 type Mutation {
   addInvoice(invoiceInput: InvoiceForm): InvoiceId
-  changeStatusInvoice(InvoiceId:ID): String
-  changeStatusDeliveryInvoice(InvoiceDelId:ID): String
+  changeStatusInvoice(InvoiceId:Int): String
+  changeStatusDeliveryInvoice(InvoiceDelId:Int): String
 }
 `;
 
@@ -95,11 +95,12 @@ const resolvers = {
     changeStatusInvoice: async (_, args) => {
       const { InvoiceId } = args;
       try {
+        console.log(args);
         const { data } = await axios.put(
           `${paymentLocalhost}/invoices/statusPaid/${InvoiceId}`
         );
-
-        return data;
+        // console.log(data);
+        return "invoice successs";
       } catch (error) {
         console.log(error);
       }
@@ -111,7 +112,7 @@ const resolvers = {
           `${paymentLocalhost}/invoices/statusDeliveredComplete/${InvoiceDelId}`
         );
 
-        return data;
+        return "invoice successs";
       } catch (error) {
         console.log(error);
       }

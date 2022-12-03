@@ -65,6 +65,7 @@ class Controller {
   static async changeStatusInvoice(req, res, next) {
     try {
       const { id } = req.params;
+      console.log(req.params);
       const data = await Invoice.update(
         {
           isPaid: "Complete",
@@ -76,6 +77,7 @@ class Controller {
       if (data[0] === 0) {
         throw { name: "INVOICE_NOT_FOUND" };
       }
+      // console.log("ihza");
       res.status(200).json({ msg: "Invoice Success update" });
     } catch (error) {
       next(error);
