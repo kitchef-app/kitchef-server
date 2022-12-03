@@ -35,7 +35,7 @@ class Controller {
           },
         }
       );
-      // console.log(data);
+      console.log(data);
       res.status(200).json(data);
     } catch (err) {
       console.log(err);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1670069005742" clover="3.2.0">
-  <project timestamp="1670069005743" name="All files">
-    <metrics statements="135" coveredstatements="134" conditionals="27" coveredconditionals="23" methods="15" coveredmethods="15" elements="177" coveredelements="172" complexity="0" loc="135" ncloc="135" packages="5" files="10" classes="10"/>
+<coverage generated="1670076317216" clover="3.2.0">
+  <project timestamp="1670076317216" name="All files">
+    <metrics statements="136" coveredstatements="135" conditionals="27" coveredconditionals="23" methods="15" coveredmethods="15" elements="178" coveredelements="173" complexity="0" loc="136" ncloc="136" packages="5" files="10" classes="10"/>
     <package name="payments">
       <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
       <file name="app.js" path="C:\Users\Browncat\Desktop\hacktive8\p3\raja terahir\kitchef-server\services\payments\app.js">
@@ -20,9 +20,9 @@
       </file>
     </package>
     <package name="payments.controllers">
-      <metrics statements="59" coveredstatements="59" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="7"/>
+      <metrics statements="60" coveredstatements="60" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="7"/>
       <file name="invoiceController.js" path="C:\Users\Browncat\Desktop\hacktive8\p3\raja terahir\kitchef-server\services\payments\controllers\invoiceController.js">
-        <metrics statements="46" coveredstatements="46" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6"/>
+        <metrics statements="47" coveredstatements="47" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
@@ -55,20 +55,21 @@
         <line num="66" count="2" type="stmt"/>
         <line num="67" count="2" type="stmt"/>
         <line num="68" count="2" type="stmt"/>
-        <line num="75" count="2" type="stmt"/>
-        <line num="76" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="77" count="1" type="stmt"/>
-        <line num="79" count="1" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="77" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="78" count="1" type="stmt"/>
         <line num="81" count="1" type="stmt"/>
-        <line num="85" count="3" type="stmt"/>
-        <line num="86" count="3" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="87" count="3" type="stmt"/>
         <line num="88" count="3" type="stmt"/>
-        <line num="94" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="95" count="2" type="stmt"/>
-        <line num="98" count="1" type="stmt"/>
-        <line num="100" count="2" type="stmt"/>
-        <line num="101" count="2" type="stmt"/>
-        <line num="106" count="1" type="stmt"/>
+        <line num="90" count="3" type="stmt"/>
+        <line num="96" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="97" count="2" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="102" count="2" type="stmt"/>
+        <line num="103" count="2" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
       </file>
       <file name="paymentController.js" path="C:\Users\Browncat\Desktop\hacktive8\p3\raja terahir\kitchef-server\services\payments\controllers\paymentController.js">
         <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
