@@ -14,13 +14,64 @@ module.exports = (sequelize, DataTypes) => {
   }
   Driver.init(
     {
-      fullName: DataTypes.STRING,
-      username: DataTypes.STRING,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
-      address: DataTypes.TEXT,
-      location: DataTypes.GEOMETRY,
-      phoneNumber: DataTypes.STRING,
+      fullName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "full name cannot be null" },
+          notEmpty: { msg: "full name cannot be empty" },
+        },
+      },
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "username cannot be null" },
+          notEmpty: { msg: "username cannot be empty" },
+        },
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: { msg: "email must be unique" },
+        validate: {
+          isEmail: { msg: "input must be an email format" },
+          notNull: { msg: "email cannot be null" },
+          notEmpty: { msg: "email cannot be empty" },
+        },
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "password cannot be null" },
+          notEmpty: { msg: "password cannot be empty" },
+        },
+      },
+      address: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "address cannot be null" },
+          notEmpty: { msg: "address cannot be empty" },
+        },
+      },
+      location: {
+        type: DataTypes.GEOMETRY,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "location cannot be null" },
+          notEmpty: { msg: "location cannot be empty" },
+        },
+      },
+      phoneNumber: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "phone number cannot be null" },
+          notEmpty: { msg: "phone number cannot be empty" },
+        },
+      },
     },
     {
       sequelize,
