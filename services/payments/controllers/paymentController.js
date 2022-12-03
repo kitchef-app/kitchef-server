@@ -21,14 +21,14 @@ class Controller {
       // console.log("bantalll");
       console.log(payload);
       const { data } = await axios.post(
-        "https://app.midtrans.com/snap/v1/transactions",
+        "https://app.sandbox.midtrans.com/snap/v1/transactions",
         payload,
         {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
             Authorization:
-              "Basic TWlkLXNlcnZlci04UWdzNlVwVE80Z3dwcGdkVWFzQmxIVTQ6",
+              "Basic U0ItTWlkLXNlcnZlci1qeUNjWDRHWWtVZEdVeFdYNzJmU0R6dU06",
           },
         }
       );
