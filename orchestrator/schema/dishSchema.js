@@ -63,22 +63,34 @@ type Ingredients {
 type Query {
   getDishes: [Dish],
   getDishesDetail(DishId:ID): DishDetail
+  getDishesByCategory(CategoryId:ID): [Dish]
 }
 `;
 
 const resolvers = {
   Query: {
-    getDishes: async (_, args) => {
+    getDishes: async () => {
       try {
-        const cacheData = await redis.get("dish");
-        // console.log(cacheData, "ini chace data");
-        if (cacheData) {
-          return JSON.parse(cacheData);
-        } else {
-          const { data } = await axios.get(`${appLocalhost}/dishes`);
-          await redis.set("dish", JSON.stringify(data));
-          return data;
-        }
+        // const cacheData = await redis.get("dish");
+        // if (cacheData) {
+        //   return JSON.parse(cacheData);
+        // } else {
+        //   const { data } = await axios.get(`${appLocalhost}/dishes`);
+        //   await redis.set("dish", JSON.stringify(data));
+        //   return data;
+        // }
+        const { data } = await axios.get(`${appLocalhost}/dishes`);
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    getDishesByCategory: async (_, args) => {
+      const { CategoryId } = args;
+      console.log(args);
+      try {
+        const { data } = await axios.get(`${appLocalhost}/dishes?CategoryId=${CategoryId}`);
+        return data;
       } catch (error) {
         console.log(error);
       }
