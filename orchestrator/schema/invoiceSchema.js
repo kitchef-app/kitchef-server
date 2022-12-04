@@ -40,8 +40,8 @@ type InvoiceId{
 
 
 type Query {
-  getInvoiceUser(UserId:ID): [Invoice],
-  getInvoiceDriver(DriverId:ID): [Invoice],
+  getInvoiceUser(UserId:Int): [Invoice],
+  getInvoiceDriver(DriverId:Int): [Invoice],
 }
 
 type Mutation {
