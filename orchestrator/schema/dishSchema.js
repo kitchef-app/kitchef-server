@@ -1,6 +1,6 @@
 const axios = require("axios");
 const Redis = require("ioredis");
-const appLocalhost = "http://localhost:3003";
+const appLocalhost = "https://app-production-56fe.up.railway.app";
 
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host
@@ -11,6 +11,7 @@ const redis = new Redis({
 const typeDefs = `#graphql
 
 type Dish {
+  id: ID,
   name: String,
   CategoryId: Int,
   videoUrl: String,
@@ -22,6 +23,7 @@ type Dish {
 }
 
 type DishDetail {
+  id: ID,
   name: String,
   CategoryId: Int,
   videoUrl: String,
@@ -33,6 +35,7 @@ type DishDetail {
 } 
 
 type Product {
+  id: ID,
   name: String,
   price: Int,
   stock: Int,
@@ -41,10 +44,12 @@ type Product {
 }
 
 type Tools {
+  id: ID,
   name: String
 }
 
 type Ingredients {
+  id: ID,
   name: String
 }
 

@@ -11,6 +11,7 @@ const redis = new Redis({
 const typeDefs = `#graphql
 
 type Invoice {
+  id: ID,
   UserId: Int,
   DriverId: Int,
   total: Int,
@@ -40,8 +41,8 @@ type InvoiceId{
 
 
 type Query {
-  getInvoiceUser(UserId:ID): [Invoice],
-  getInvoiceDriver(DriverId:ID): [Invoice],
+  getInvoiceUser(UserId:Int): [Invoice],
+  getInvoiceDriver(DriverId:Int): [Invoice],
 }
 
 type Mutation {
@@ -68,11 +69,13 @@ const resolvers = {
     },
     getInvoiceDriver: async (_, args) => {
       const { DriverId } = args;
-      console.log(args);
+      // console.log(args);
+      console.log(DriverId);
       try {
         const { data } = await axios.get(
           `${paymentLocalhost}/invoices/drivers/${DriverId}`
         );
+
         return data;
       } catch (error) {
         console.log(error);
