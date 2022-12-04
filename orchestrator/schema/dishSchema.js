@@ -11,6 +11,7 @@ const redis = new Redis({
 const typeDefs = `#graphql
 
 type Dish {
+  id: ID,
   name: String,
   CategoryId: Int,
   videoUrl: String,
@@ -21,6 +22,7 @@ type Dish {
 }
 
 type DishDetail {
+  id: ID,
   name: String,
   CategoryId: Int,
   videoUrl: String,
@@ -32,6 +34,7 @@ type DishDetail {
 } 
 
 type Product {
+  id: ID,
   name: String,
   price: Int,
   stock: Int,
@@ -40,10 +43,12 @@ type Product {
 }
 
 type Tools {
+  id: ID,
   name: String
 }
 
 type Ingredients {
+  id: ID,
   name: String
 }
 
