@@ -1,6 +1,6 @@
 const axios = require("axios");
 const Redis = require("ioredis");
-const appLocalhost = "http://localhost:3003";
+const appLocalhost = "https://app-production-56fe.up.railway.app";
 
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host
@@ -60,7 +60,9 @@ const resolvers = {
       const { CategoryId } = args;
       console.log(args);
       try {
-        const { data } = await axios.get(`${appLocalhost}/dishes?CategoryId=${CategoryId}`);
+        const { data } = await axios.get(
+          `${appLocalhost}/dishes?CategoryId=${CategoryId}`
+        );
         return data;
       } catch (error) {
         console.log(error);

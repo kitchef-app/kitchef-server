@@ -1,6 +1,6 @@
 const axios = require("axios");
 const Redis = require("ioredis");
-const appLocalhost = "http://localhost:3003";
+const appLocalhost = "https://app-production-56fe.up.railway.app";
 
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host

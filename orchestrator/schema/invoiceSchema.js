@@ -41,7 +41,7 @@ type InvoiceId{
 
 type Query {
   getInvoiceUser(UserId:ID): [Invoice],
-  getInvoiceDriver(DriverId:ID): [Invoice],
+  getInvoiceDriver(DriverId:Int): [Invoice],
 }
 
 type Mutation {
@@ -68,11 +68,13 @@ const resolvers = {
     },
     getInvoiceDriver: async (_, args) => {
       const { DriverId } = args;
-      console.log(args);
+      // console.log(args);
+      console.log(DriverId);
       try {
         const { data } = await axios.get(
           `${paymentLocalhost}/invoices/drivers/${DriverId}`
         );
+
         return data;
       } catch (error) {
         console.log(error);
