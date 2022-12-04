@@ -18,9 +18,7 @@ type Dish {
   description: String,
   imageUrl: String,
   listIngredients: [Ingredients],
-  listTools: [Tools],
-  Products: [Product],
-  steps: [Steps]
+  listTools: [Tools]
 }
 
 type DishDetail {
@@ -68,10 +66,12 @@ type Query {
 
 const resolvers = {
   Query: {
-    getDishes: async () => {
+    getDishes: async (_, args) => {
+      const { CategoryId } = args;
+      console.log(args);
       try {
         const { data } = await axios.get(
-          `${appLocalhost}/dishes`
+          `${appLocalhost}/dishes?CategoryId=${CategoryId}`
         );
         return data;
       } catch (error) {
