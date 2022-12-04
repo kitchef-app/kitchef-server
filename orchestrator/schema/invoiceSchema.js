@@ -11,6 +11,7 @@ const redis = new Redis({
 const typeDefs = `#graphql
 
 type Invoice {
+  id: ID,
   UserId: Int,
   DriverId: Int,
   total: Int,

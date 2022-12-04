@@ -11,6 +11,7 @@ const redis = new Redis({
 const typeDefs = `#graphql
 
 type Dish {
+  id: ID,
   name: String,
   CategoryId: Int,
   videoUrl: String,
@@ -18,10 +19,10 @@ type Dish {
   imageUrl: String,
   listIngredients: [Ingredients],
   listTools: [Tools]
-  steps:[steps]
 }
 
 type DishDetail {
+  id: ID,
   name: String,
   CategoryId: Int,
   videoUrl: String,
@@ -37,6 +38,7 @@ type steps{
 }
 
 type Product {
+  id: ID,
   name: String,
   price: Int,
   stock: Int,
@@ -45,16 +47,18 @@ type Product {
 }
 
 type Tools {
+  id: ID,
   name: String
 }
 
 type Ingredients {
+  id: ID,
   name: String
 }
 
 
 type Query {
-  getDishes(CategoryId:ID): [Dish],
+  getDishes: [Dish],
   getDishesDetail(DishId:ID): DishDetail
 }
 `;
@@ -62,23 +66,13 @@ type Query {
 const resolvers = {
   Query: {
     getDishes: async (_, args) => {
+      const { CategoryId } = args;
+      console.log(args);
       try {
-        const { CategoryId } = args;
-        console.log(args);
-        const dataCache = await redis.get("dishes");
-        if (dataCache) {
-          console.log("masuk redis");
-          // console.log(dataCache);
-          return JSON.parse(dataCache);
-        } else {
-          console.log("no redis");
-          const { data } = await axios.get(
-            `${appLocalhost}/dishes?CategoryId=${CategoryId}`
-          );
-          await redis.set("dishes", JSON.stringify(data));
-
-          return data;
-        }
+        const { data } = await axios.get(
+          `${appLocalhost}/dishes?CategoryId=${CategoryId}`
+        );
+        return data;
       } catch (error) {
         console.log(error);
       }
