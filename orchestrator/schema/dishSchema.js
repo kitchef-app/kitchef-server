@@ -19,7 +19,8 @@ type Dish {
   imageUrl: String,
   listIngredients: [Ingredients],
   listTools: [Tools],
-  Products: [Product]
+  Products: [Product],
+  steps: [Steps]
 }
 
 type DishDetail {
@@ -30,8 +31,9 @@ type DishDetail {
   description: String,
   imageUrl: String,
   listIngredients: [Ingredients],
-  listTools: [Tools]
-  Products: [Product]
+  listTools: [Tools],
+  Products: [Product],
+  steps: [Steps]
 } 
 
 type Product {
@@ -45,6 +47,10 @@ type Product {
 
 type Tools {
   id: ID,
+  name: String
+}
+
+type Steps {
   name: String
 }
 
