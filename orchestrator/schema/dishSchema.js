@@ -18,7 +18,9 @@ type Dish {
   description: String,
   imageUrl: String,
   listIngredients: [Ingredients],
-  listTools: [Tools]
+  listTools: [Tools],
+  Products: [Product],
+  steps: [Steps]
 }
 
 type DishDetail {
@@ -67,13 +69,16 @@ type Query {
 const resolvers = {
   Query: {
     getDishes: async (_, args) => {
-      const { CategoryId } = args;
-      console.log(args);
       try {
-        const { data } = await axios.get(
-          `${appLocalhost}/dishes?CategoryId=${CategoryId}`
-        );
-        return data;
+        const cacheData = await redis.get("dish");
+        // console.log(cacheData, "ini chace data");
+        if (cacheData) {
+          return JSON.parse(cacheData);
+        } else {
+          const { data } = await axios.get(`${appLocalhost}/dishes`);
+          await redis.set("dish", JSON.stringify(data));
+          return data;
+        }
       } catch (error) {
         console.log(error);
       }
