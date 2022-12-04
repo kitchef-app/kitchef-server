@@ -70,7 +70,9 @@ const resolvers = {
   Query: {
     getDishes: async () => {
       try {
-        const { data } = await axios.get(`${appLocalhost}/dishes`);
+        const { data } = await axios.get(
+          `${appLocalhost}/dishes`
+        );
         return data;
       } catch (error) {
         console.log(error);
