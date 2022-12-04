@@ -2,18 +2,6 @@ const { Dish, ProductDish, Category, Product } = require("../models/index");
 class Controller {
   static async getDish(req, res, next) {
     try {
-      let options = {};
-      // const { CategoryId } = req.query;
-
-      // if (CategoryId) {
-      //   options = {
-      //     where: {
-      //       CategoryId,
-      //     },
-      //     include: [Category],
-      //   };
-      // }
-
       const data = await Dish.findAll({
         include: Category,
       });
