@@ -11,6 +11,7 @@ const redis = new Redis({
 const typeDefs = `#graphql
 
 type Product {
+  id: ID,
   name: String,
   price: Int,
   stock: Int,

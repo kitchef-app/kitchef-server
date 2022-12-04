@@ -11,6 +11,7 @@ const redis = new Redis({
 const typeDefs = `#graphql
 
 type Category {
+  id: ID,
   name: String,
   imageUrl: String,
 }
