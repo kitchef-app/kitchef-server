@@ -1,6 +1,6 @@
 const axios = require("axios");
 const Redis = require("ioredis");
-const paymentLocalhost = "http://localhost:3002";
+const paymentLocalhost = "https://dandy-partner-production.up.railway.app";
 
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host
@@ -40,8 +40,8 @@ type InvoiceId{
 
 
 type Query {
-  getInvoiceUser(UserId:ID): Invoice,
-  getInvoiceDriver(DriverId:ID): Invoice,
+  getInvoiceUser(UserId:ID): [Invoice],
+  getInvoiceDriver(DriverId:ID): [Invoice],
 }
 
 type Mutation {
@@ -60,6 +60,7 @@ const resolvers = {
         const { data } = await axios.get(
           `${paymentLocalhost}/invoices/users/${UserId}`
         );
+        console.log(data);
         return data;
       } catch (error) {
         console.log(error);
