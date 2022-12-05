@@ -27,19 +27,19 @@ const resolvers = {
   Query: {
     getCategory: async () => {
       try {
-        const dataCache = await redis.get("categories");
-        if (dataCache) {
-          console.log("masuk redis");
-          // console.log(dataCache);
-          return JSON.parse(dataCache);
-        } else {
-          console.log("no redis");
+        // const dataCache = await redis.get("categories");
+        // if (dataCache) {
+        //   console.log("masuk redis");
+        // console.log(dataCache);
+        // return JSON.parse(dataCache);
+        // } else {
+        console.log("no redis");
 
-          const { data } = await axios.get(`${appLocalhost}/categories`);
-          await redis.set("categories", JSON.stringify(data));
+        const { data } = await axios.get(`${appLocalhost}/categories`);
+        // await redis.set("categories", JSON.stringify(data));
 
-          return data;
-        }
+        return data;
+        // }
       } catch (error) {
         console.log(error);
       }
