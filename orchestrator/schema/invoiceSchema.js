@@ -64,6 +64,9 @@ type Mutation {
 
 const resolvers = {
   Query: {
+    getInvoiceById: async (_, args) => {
+      const { InvoiceId } = args;
+    },
     getInvoiceUser: async (_, args) => {
       const { UserId } = args;
       console.log(UserId);

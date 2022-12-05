@@ -3,13 +3,11 @@ const Redis = require("ioredis");
 const paymentLocalhost = "https://dandy-partner-production.up.railway.app";
 // const paymentLocalhost = "http://localhost:3002";
 
-
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host
   port: 18717,
   password: "JyJif0KTEPz4ITRk1XbeVrJEbEESudWN",
 });
-
 const typeDefs = `#graphql
 
 type Payment {
@@ -33,10 +31,7 @@ const resolvers = {
       const { paymentInput } = args;
       console.log(paymentInput);
       try {
-        const { data } = await axios.post(
-          `${paymentLocalhost}/payments`,
-          paymentInput
-        );
+        const { data } = await axios.post(`${paymentLocalhost}/payments`, paymentInput);
 
         console.log(data);
         return data;

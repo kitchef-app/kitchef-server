@@ -2,7 +2,7 @@ const { sequelize } = require("../models/index");
 const { queryInterface } = sequelize;
 const request = require("supertest");
 const app = require("../app");
-const { createToken } = require("../helpers/jwt");
+// const { createToken } = require("../helpers/jwt");
 
 beforeAll(() => {
   queryInterface.bulkDelete(
