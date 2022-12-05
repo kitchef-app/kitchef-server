@@ -1,6 +1,5 @@
 const axios = require("axios");
 const Redis = require("ioredis");
-const log = require("../../services/users/models/log");
 const paymentLocalhost = "https://dandy-partner-production.up.railway.app";
 const userLocalhost = "https://kitchef-server-production.up.railway.app";
 // const paymentLocalhost = "http://localhost:3002";
