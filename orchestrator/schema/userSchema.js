@@ -2,7 +2,6 @@ const axios = require("axios");
 const Redis = require("ioredis");
 const userLocalhost = "https://kitchef-server-production.up.railway.app";
 // const userLocalhost = "http://localhost:3001";
-// const userLocalhost = "http://localhost:3001";
 
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host
