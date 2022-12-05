@@ -223,7 +223,7 @@ describe("/POST/drivers/register", () => {
 
   test("400 - location cannot be null", async () => {
     objDriver.longitude = null;
-    let response = await request(app).post("/users/register").set("Accept", "application/x-www-form-urlencoded").send(objDriver);
+    let response = await request(app).post("/drivers/register").set("Accept", "application/x-www-form-urlencoded").send(objDriver);
     console.log(response.body, "<<<<<<<<");
     expect(response.statusCode).toBe(400);
     expect(response.body).toBeInstanceOf(Object);
@@ -277,7 +277,7 @@ describe("POST /drivers/login", () => {
   });
 });
 
-describe("GET/drivers/:id", () => {
+describe("GET/users/:id", () => {
   test("200 - get user by id", async () => {
     let response = await request(app).get("/users/1");
 

@@ -77,7 +77,7 @@ describe("GET/categories", () => {
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toBeInstanceOf(Array);
-    expect(response.body[0]).toHaveProperty("name", "Masakan Indonesia");
+    expect(response.body[0]).toHaveProperty("name", "Indonesia");
     expect(response.body[0]).toHaveProperty("imageUrl", "https://img-global.cpcdn.com/recipes/fc61c7ff25651d8e/312x200cq70/photo.jpg");
   });
 });
@@ -125,6 +125,14 @@ describe("GET/dishes", () => {
     expect(response.body[0]).toHaveProperty("description", "Gudeg sehat dengan bumbu yang sedikit. Namun hasilnya tetap tidak kalah dengan gudeg asli");
     expect(response.body[0].listIngredients).toBeInstanceOf(Array);
     expect(response.body[0].listTools).toBeInstanceOf(Array);
+  });
+
+  test("404 data not found", async () => {
+    let response = await request(app).get("/dishes?CategoryId=99");
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("message", "data with id 99 is not found");
   });
 });
 

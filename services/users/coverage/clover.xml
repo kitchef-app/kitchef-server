@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1670086748017" clover="3.2.0">
-  <project timestamp="1670086748018" name="All files">
-    <metrics statements="172" coveredstatements="171" conditionals="53" coveredconditionals="44" methods="24" coveredmethods="23" elements="249" coveredelements="238" complexity="0" loc="172" ncloc="172" packages="6" files="14" classes="14"/>
+<coverage generated="1670208394118" clover="3.2.0">
+  <project timestamp="1670208394118" name="All files">
+    <metrics statements="172" coveredstatements="171" conditionals="53" coveredconditionals="45" methods="24" coveredmethods="23" elements="249" coveredelements="239" complexity="0" loc="172" ncloc="172" packages="6" files="14" classes="14"/>
     <package name="users">
       <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
       <file name="app.js" path="C:\Users\user\Desktop\Hacktiv8\Phase3\W3\Kitchef\kitchef-server\services\users\app.js">
@@ -20,9 +20,9 @@
       </file>
     </package>
     <package name="users.controllers">
-      <metrics statements="67" coveredstatements="67" conditionals="36" coveredconditionals="31" methods="6" coveredmethods="6"/>
+      <metrics statements="67" coveredstatements="67" conditionals="36" coveredconditionals="32" methods="6" coveredmethods="6"/>
       <file name="driverController.js" path="C:\Users\user\Desktop\Hacktiv8\Phase3\W3\Kitchef\kitchef-server\services\users\controllers\driverController.js">
-        <metrics statements="34" coveredstatements="34" conditionals="18" coveredconditionals="15" methods="3" coveredmethods="3"/>
+        <metrics statements="34" coveredstatements="34" conditionals="18" coveredconditionals="16" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -43,13 +43,13 @@
         <line num="42" count="1" type="stmt"/>
         <line num="50" count="3" type="stmt"/>
         <line num="51" count="3" type="stmt"/>
-        <line num="56" count="6" type="cond" truecount="0" falsecount="2"/>
-        <line num="57" count="6" type="stmt"/>
-        <line num="58" count="6" type="cond" truecount="5" falsecount="1"/>
+        <line num="56" count="7" type="cond" truecount="0" falsecount="2"/>
+        <line num="57" count="7" type="stmt"/>
+        <line num="58" count="7" type="cond" truecount="6" falsecount="0"/>
         <line num="59" count="6" type="stmt"/>
         <line num="68" count="1" type="stmt"/>
-        <line num="73" count="5" type="stmt"/>
-        <line num="74" count="5" type="stmt"/>
+        <line num="73" count="6" type="stmt"/>
+        <line num="74" count="6" type="stmt"/>
         <line num="79" count="2" type="stmt"/>
         <line num="80" count="2" type="stmt"/>
         <line num="81" count="2" type="stmt"/>
@@ -78,14 +78,14 @@
         <line num="40" count="1" type="stmt"/>
         <line num="48" count="3" type="stmt"/>
         <line num="49" count="3" type="stmt"/>
-        <line num="54" count="8" type="cond" truecount="0" falsecount="2"/>
-        <line num="55" count="8" type="stmt"/>
-        <line num="56" count="8" type="stmt"/>
-        <line num="57" count="8" type="cond" truecount="6" falsecount="0"/>
+        <line num="54" count="7" type="cond" truecount="0" falsecount="2"/>
+        <line num="55" count="7" type="stmt"/>
+        <line num="56" count="7" type="stmt"/>
+        <line num="57" count="7" type="cond" truecount="6" falsecount="0"/>
         <line num="58" count="6" type="stmt"/>
         <line num="68" count="1" type="stmt"/>
-        <line num="73" count="7" type="stmt"/>
-        <line num="74" count="7" type="stmt"/>
+        <line num="73" count="6" type="stmt"/>
+        <line num="74" count="6" type="stmt"/>
         <line num="79" count="2" type="stmt"/>
         <line num="80" count="2" type="stmt"/>
         <line num="81" count="2" type="stmt"/>
