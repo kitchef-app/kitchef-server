@@ -11,6 +11,10 @@ class Controller {
       next(error);
     }
   }
+
+  static async getLogs(req, res, next) {
+    
+  }
 }
 
 module.exports = Controller;
