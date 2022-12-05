@@ -66,7 +66,7 @@ const resolvers = {
   Query: {
     getInvoiceUser: async (_, args) => {
       const { UserId } = args;
-      console.log(args);
+      console.log(UserId);
       try {
         const { data } = await axios.get(`${paymentLocalhost}/invoices/users/${UserId}`);
 
