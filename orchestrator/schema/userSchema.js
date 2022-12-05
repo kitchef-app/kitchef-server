@@ -1,6 +1,7 @@
 const axios = require("axios");
 const Redis = require("ioredis");
 const userLocalhost = "https://kitchef-server-production.up.railway.app";
+// const userLocalhost = "http://localhost:3001";
 
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host
@@ -75,10 +76,7 @@ const resolvers = {
       const { userInput } = args;
       console.log(userInput);
       try {
-        const { data } = await axios.post(
-          `${userLocalhost}/users/register`,
-          userInput
-        );
+        const { data } = await axios.post(`${userLocalhost}/users/register`, userInput);
 
         console.log(data);
         return `success adding user with email ${data.email}`;
@@ -90,10 +88,7 @@ const resolvers = {
       const { userLogin } = args;
       console.log(userLogin);
       try {
-        const { data } = await axios.post(
-          `${userLocalhost}/users/login`,
-          userLogin
-        );
+        const { data } = await axios.post(`${userLocalhost}/users/login`, userLogin);
 
         console.log(data);
         return data;
