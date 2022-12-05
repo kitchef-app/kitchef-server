@@ -49,6 +49,17 @@ module.exports = {
     });
     // console.log(dataDish);
     await queryInterface.bulkInsert("ProductDishes", dataProductDish);
+
+    const dataInvoiceProduct = JSON.parse(
+      fs.readFileSync("./data/invoiceProduct.json", "utf-8")
+    );
+    // console.log(dataDish);
+
+    dataInvoiceProduct.forEach((e) => {
+      e.createdAt = e.updatedAt = new Date();
+    });
+    // console.log(dataDish);
+    await queryInterface.bulkInsert("InvoiceProducts", dataInvoiceProduct);
   },
 
   async down(queryInterface, Sequelize) {
