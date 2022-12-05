@@ -1,10 +1,12 @@
 const { Invoice, Log, InvoiceProduct } = require("../models/index");
 class Controller {
   static async getInvoiceById(req, res, next) {
+    console.log("lontong");
     const { id } = req.params;
+    console.log(id);
     try {
       const data = await Invoice.findByPk(id);
-
+      console.log(data);
       res.status(200).json(data);
     } catch (error) {
       next(error);
@@ -20,7 +22,10 @@ class Controller {
         throw { name: "USER_NOT_FOUND" };
       }
 
-      const data = await Invoice.findAll({ where: { UserId } });
+      const data = await Invoice.findAll({
+        where: { UserId },
+        order: [["id", "DESC"]],
+      });
 
       res.status(200).json(data);
     } catch (error) {
@@ -31,13 +36,17 @@ class Controller {
   static async getInvoiceByDriverId(req, res, next) {
     const { DriverId } = req.params;
     try {
+      console.log(DriverId);
       const cekid = await Invoice.findByPk(DriverId);
       // console.log(cekid);
       if (!cekid) {
         throw { name: "USER_NOT_FOUND" };
       }
 
-      const data = await Invoice.findAll({ where: { DriverId } });
+      const data = await Invoice.findAll({
+        where: { DriverId },
+        order: [["id", "DESC"]],
+      });
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
@@ -46,7 +55,8 @@ class Controller {
   }
   static async addInvoice(req, res, next) {
     try {
-      const { UserId, DriverId, total, subTotal, shippingCost, cart } = req.body;
+      const { UserId, DriverId, total, subTotal, shippingCost, cart } =
+        req.body;
       const isPaid = "belum";
       const isDelivered = "none";
       const invoice = await Invoice.create({

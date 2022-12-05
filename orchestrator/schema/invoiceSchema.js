@@ -1,8 +1,8 @@
 const axios = require("axios");
 const Redis = require("ioredis");
-const paymentLocalhost = "https://dandy-partner-production.up.railway.app";
+// const paymentLocalhost = "https://dandy-partner-production.up.railway.app";
 const userLocalhost = "https://kitchef-server-production.up.railway.app";
-// const paymentLocalhost = "http://localhost:3002";
+const paymentLocalhost = "http://localhost:3002";
 // const userLocalhost = "http://localhost:3001";
 
 const redis = new Redis({
@@ -50,6 +50,7 @@ type Logs {
 
 
 type Query {
+  getInvoiceById(Id:Int): Invoice,
   getInvoiceUser(UserId:Int): [Invoice],
   getInvoiceDriver(DriverId:Int): [Invoice],
   getLogs(UserIdLogs:Int): [Logs]
@@ -64,11 +65,25 @@ type Mutation {
 
 const resolvers = {
   Query: {
+    getInvoiceById: async (_, args) => {
+      const { Id } = args;
+      console.log(Id);
+      try {
+        const { data } = await axios.get(`${paymentLocalhost}/invoices/${Id}`);
+
+        console.log(data);
+        return data;
+      } catch (error) {
+        // console.log(error);
+      }
+    },
     getInvoiceUser: async (_, args) => {
       const { UserId } = args;
       console.log(UserId);
       try {
-        const { data } = await axios.get(`${paymentLocalhost}/invoices/users/${UserId}`);
+        const { data } = await axios.get(
+          `${paymentLocalhost}/invoices/users/${UserId}`
+        );
 
         console.log(data);
         return data;
@@ -93,11 +108,14 @@ const resolvers = {
 
         //   return data;
         // }
-        const { data } = await axios.get(`${paymentLocalhost}/invoices/drivers/${DriverId}`);
+        console.log(args);
+        const { data } = await axios.get(
+          `${paymentLocalhost}/invoices/drivers/${DriverId}`
+        );
 
         return data;
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
     getLogs: async (_, args) => {
@@ -115,9 +133,14 @@ const resolvers = {
     addInvoice: async (_, args) => {
       const { invoiceInput } = args;
       try {
-        const { data: Invoice } = await axios.post(`${paymentLocalhost}/invoices`, invoiceInput);
+        const { data: Invoice } = await axios.post(
+          `${paymentLocalhost}/invoices`,
+          invoiceInput
+        );
 
-        const { data: InvoiceById } = await axios.get(`${paymentLocalhost}/invoices/usersid/${Invoice.InvoiceId}`);
+        const { data: InvoiceById } = await axios.get(
+          `${paymentLocalhost}/invoices/usersid/${Invoice.InvoiceId}`
+        );
         console.log(InvoiceById);
 
         const { data: Logs } = await axios.post(`${userLocalhost}/logs`, {
@@ -135,7 +158,9 @@ const resolvers = {
       const { InvoiceId } = args;
       try {
         console.log(args);
-        const { data: Invoice } = await axios.put(`${paymentLocalhost}/invoices/statusPaid/${InvoiceId}`);
+        const { data: Invoice } = await axios.put(
+          `${paymentLocalhost}/invoices/statusPaid/${InvoiceId}`
+        );
 
         const { data: Logs } = await axios.post(`${userLocalhost}/logs`, {
           UserId: InvoiceId,
@@ -151,7 +176,9 @@ const resolvers = {
     changeStatusDeliveryInvoice: async (_, args) => {
       const { InvoiceDelId } = args;
       try {
-        const { data: Invoice } = await axios.put(`${paymentLocalhost}/invoices/statusDeliveredComplete/${InvoiceDelId}`);
+        const { data: Invoice } = await axios.put(
+          `${paymentLocalhost}/invoices/statusDeliveredComplete/${InvoiceDelId}`
+        );
 
         // await redis.del("invoices");
         const { data: Logs } = await axios.post(`${userLocalhost}/logs`, {

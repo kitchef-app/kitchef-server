@@ -3,7 +3,6 @@ const Redis = require("ioredis");
 const paymentLocalhost = "https://dandy-partner-production.up.railway.app";
 // const paymentLocalhost = "http://localhost:3002";
 
-
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host
   port: 18717,
