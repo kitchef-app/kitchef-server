@@ -79,10 +79,7 @@ const resolvers = {
       const { driverInput } = args;
       console.log(driverInput);
       try {
-        const { data } = await axios.post(
-          `${userLocalhost}/users/register`,
-          driverInput
-        );
+        const { data } = await axios.post(`${userLocalhost}/users/register`, driverInput);
 
         console.log(data);
         return `success adding user with email ${data.email}`;
@@ -94,10 +91,7 @@ const resolvers = {
       const { driverLogin } = args;
       console.log(driverLogin);
       try {
-        const { data } = await axios.post(
-          `${userLocalhost}/drivers/login`,
-          driverLogin
-        );
+        const { data } = await axios.post(`${userLocalhost}/drivers/login`, driverLogin);
 
         console.log(data);
         return data;

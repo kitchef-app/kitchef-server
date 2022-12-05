@@ -2,6 +2,7 @@ const axios = require("axios");
 const Redis = require("ioredis");
 const userLocalhost = "https://kitchef-server-production.up.railway.app";
 // const userLocalhost = "http://localhost:3001";
+// const userLocalhost = "http://localhost:3001";
 
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host
@@ -33,6 +34,11 @@ type LoginResult {
   id: Int
 }
 
+type Logs {
+  UserId:Int,
+  messageNotification: String
+}
+
 input UserForm {
   fullName: String,
   username: String,
@@ -52,6 +58,7 @@ input LoginForm {
 
 type Query {
   getUserById(_id:Int): User,
+  getLogsByUserId(LogsUserId: ID): [Logs]
 }
 
 type Mutation {
@@ -67,6 +74,16 @@ const resolvers = {
         const { _id } = args;
         console.log(_id, "ini dari args by id");
         const { data } = await axios.get(`${userLocalhost}/users/${_id}`);
+
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    getLogsByUserId: async (_, args) => {
+      const { LogsUserId } = args;
+      try {
+        const { data } = await axios.get(`${userLocalhost}/logs/${LogsUserId}`);
 
         return data;
       } catch (error) {

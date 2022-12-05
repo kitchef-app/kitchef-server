@@ -1,5 +1,16 @@
 const { Invoice, Log, InvoiceProduct } = require("../models/index");
 class Controller {
+  static async getInvoiceById(req, res, next) {
+    const { id } = req.params;
+    try {
+      const data = await Invoice.findByPk(id);
+
+      res.status(200).json(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async getInvoiceByUserId(req, res, next) {
     const { UserId } = req.params;
     try {
@@ -35,8 +46,7 @@ class Controller {
   }
   static async addInvoice(req, res, next) {
     try {
-      const { UserId, DriverId, total, subTotal, shippingCost, cart } =
-        req.body;
+      const { UserId, DriverId, total, subTotal, shippingCost, cart } = req.body;
       const isPaid = "belum";
       const isDelivered = "none";
       const invoice = await Invoice.create({

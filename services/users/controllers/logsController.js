@@ -11,6 +11,17 @@ class Controller {
       next(error);
     }
   }
+
+  static async getLogs(req, res, next) {
+    const { UserId } = req.params;
+    try {
+      const data = await Log.findAll({ where: { UserId } });
+
+      res.status(200).json(data)
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = Controller;
