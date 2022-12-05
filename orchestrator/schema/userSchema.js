@@ -29,6 +29,11 @@ type LoginResult {
   id: Int
 }
 
+type Logs {
+  UserId:Int,
+  messageNotification: String
+}
+
 input UserForm {
   fullName: String,
   username: String,
@@ -48,6 +53,7 @@ input LoginForm {
 
 type Query {
   getUserById(_id:ID): User,
+  getLogsByUserId(LogsUserId: ID): [Logs]
 }
 
 type Mutation {
@@ -64,6 +70,16 @@ const resolvers = {
         // console.log(_id, "ini dari args by id");
 
         const { data } = await axios.get(`${userLocalhost}/users/${_id}`);
+
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    getLogsByUserId: async (_, args) => {
+      const { LogsUserId } = args;
+      try {
+        const { data } = await axios.get(`${userLocalhost}/logs/${LogsUserId}`);
 
         return data;
       } catch (error) {
