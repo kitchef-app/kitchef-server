@@ -73,20 +73,20 @@ const resolvers = {
         const { DriverId } = args;
         // console.log(args);
         console.log(DriverId);
-        const dataCache = await redis.get("invoices");
-        if (dataCache) {
-          console.log("masuk redis");
-          // console.log(dataCache);
-          return JSON.parse(dataCache);
-        } else {
-          console.log("masuk no redis");
-          const { data } = await axios.get(
-            `${paymentLocalhost}/invoices/drivers/${DriverId}`
-          );
-          await redis.set("invoices", JSON.stringify(data));
+        // const dataCache = await redis.get("invoices");
+        // if (dataCache) {
+        //   console.log("masuk redis");
+        //   // console.log(dataCache);
+        //   return JSON.parse(dataCache);
+        // } else {
+        //   console.log("masuk no redis");
+        const { data } = await axios.get(
+          `${paymentLocalhost}/invoices/drivers/${DriverId}`
+        );
+        await redis.set("invoices", JSON.stringify(data));
 
-          return data;
-        }
+        return data;
+        // }
       } catch (error) {
         console.log(error);
       }
@@ -100,7 +100,7 @@ const resolvers = {
           `${paymentLocalhost}/invoices`,
           invoiceInput
         );
-        await redis.del("invoices");
+        // await redis.del("invoices");
         return data;
       } catch (error) {
         console.log(error);
@@ -114,7 +114,7 @@ const resolvers = {
           `${paymentLocalhost}/invoices/statusPaid/${InvoiceId}`
         );
         // console.log(data);
-        await redis.del("invoices");
+        // await redis.del("invoices");
         return "invoice successs";
       } catch (error) {
         console.log(error);
@@ -126,7 +126,7 @@ const resolvers = {
         const { data } = await axios.put(
           `${paymentLocalhost}/invoices/statusDeliveredComplete/${InvoiceDelId}`
         );
-        await redis.del("invoices");
+        // await redis.del("invoices");
         return "invoice successs";
       } catch (error) {
         console.log(error);
