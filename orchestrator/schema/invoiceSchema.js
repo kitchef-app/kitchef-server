@@ -2,6 +2,9 @@ const axios = require("axios");
 const Redis = require("ioredis");
 const paymentLocalhost = "https://dandy-partner-production.up.railway.app";
 const userLocalhost = "https://kitchef-server-production.up.railway.app";
+const appLocalhost = "https://app-production-56fe.up.railway.app";
+// const appLocalhost = "http://localhost:3003";
+
 // const paymentLocalhost = "http://localhost:3002";
 
 const redis = new Redis({
@@ -137,8 +140,21 @@ const resolvers = {
           `${paymentLocalhost}/invoices`,
           invoiceInput
         );
-
-        console.log(Invoice);
+        // const newCart =
+        console.log(Invoice.id);
+        const newCart = invoiceInput.cart;
+        // newCart.InvoiceId = Invoice.id;
+        newCart.forEach((el) => {
+          el.InvoiceId = Invoice.id;
+        });
+        // console.log(newCart);
+        // console.log(invoiceInput.cart);
+        // const newCart = invoiceInput
+        const { data } = await axios.post(
+          `${appLocalhost}/products/invoiceProduct`,
+          { cart: newCart }
+        );
+        // console.log(Invoice);
         // const { data: InvoiceById } = await axios.get(
         //   `${paymentLocalhost}/invoices/users/${Invoice.InvoiceId}`
         // );

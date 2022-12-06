@@ -76,7 +76,7 @@ class Controller {
       });
       // console.log(cart);
 
-      await InvoiceProduct.bulkCreate(cart);
+      // await InvoiceProduct.bulkCreate(cart);
 
       res.status(201).json(invoice);
     } catch (error) {
