@@ -160,6 +160,39 @@ describe("GET/products/invoices/:InvoiceId", () => {
   });
 });
 
+describe("POST/products/invoiceProduct", () => {
+  let cart = [
+    {
+      ProductId: 1,
+      InvoiceId: 1,
+      total: 30,
+    },
+    {
+      ProductId: 1,
+      InvoiceId: 1,
+      total: 30,
+    },
+  ];
+
+  test("201 - success add InvoiceProduct", async () => {
+    let response = await request(app).post("/products/invoiceProduct").set("Accept", "application/x-www-form-urlencoded").send({ cart });
+
+    expect(response.statusCode).toBe(201);
+    expect(response.body).toBeInstanceOf(Array);
+    expect(response.body[0]).toHaveProperty("ProductId", 1);
+    expect(response.body[0]).toHaveProperty("InvoiceId", 1);
+    expect(response.body[0]).toHaveProperty("total", 30);
+  });
+
+  test("500 - error adding InvoiceCart", async () => {
+    let response = await request(app).post("/products/invoiceProduct").set("Accept", "application/x-www-form-urlencoded").send(cart);
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("message", "Internal Server Error");
+  });
+});
+
 describe("POST/products/stok/:id", () => {
   test("200 - success updating stock", async () => {
     let response = await request(app).put("/products/stok/1").set("Accept", "application/x-www-form-urlencoded").send({ total: 1 });

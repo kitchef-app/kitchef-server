@@ -51,30 +51,17 @@ class Controller {
   }
 
   static async userRegister(req, res, next) {
-    const {
-      fullName,
-      username,
-      email,
-      password,
-      address,
-      phoneNumber,
-      longitude = 0,
-      latitude = 0,
-    } = req.body;
+    const { fullName, username, email, password, address, phoneNumber, longitude = 0, latitude = 0 } = req.body;
     let role = "user";
     try {
-      if (longitude === 0 || latitude === 0 || !longitude || !latitude)
-        throw { name: "INPUT_LOCATION" };
+      if (longitude === 0 || latitude === 0 || !longitude || !latitude) throw { name: "INPUT_LOCATION" };
       const createdUser = await User.create({
         fullName,
         username,
         email,
         password,
         role,
-        location: Sequelize.fn(
-          "ST_GeomFromText",
-          `POINT(${latitude} ${longitude})`
-        ),
+        location: Sequelize.fn("ST_GeomFromText", `POINT(${latitude} ${longitude})`),
         phoneNumber,
         address,
       });
@@ -102,12 +89,9 @@ class Controller {
     }
   }
   static async allUser(req, res, next) {
-    console.log("lontonf");
     // const { id } = req.params;
     try {
       const user = await User.findAll();
-
-      if (!user) throw { name: "DATA_NOT_FOUND", data: "user", id };
 
       res.status(200).json(user);
     } catch (error) {

@@ -36,10 +36,9 @@ class Controller {
       const data = await InvoiceProduct.bulkCreate(cart);
 
       // console.log(data);
-      res.status(200).json(data);
+      res.status(201).json(data);
     } catch (error) {
       next(error);
-      console.log(error);
     }
   }
   static async editStock(req, res, next) {
