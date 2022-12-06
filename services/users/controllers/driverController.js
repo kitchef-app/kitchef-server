@@ -47,7 +47,6 @@ class Controller {
         id: foundDriver.id,
       });
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
