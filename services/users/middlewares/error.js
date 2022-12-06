@@ -29,6 +29,9 @@ async function errors(error, req, res, next) {
       code = 401;
       message = "Invalid username or password";
       break;
+    default:
+      code = 500;
+      message = "Internal Server Error";
   }
   res.status(code).json({ message });
 }

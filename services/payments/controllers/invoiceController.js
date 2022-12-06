@@ -7,6 +7,9 @@ class Controller {
     try {
       const data = await Invoice.findByPk(id);
       console.log(data);
+
+      if (!data) throw { name: "INVOICE_NOT_FOUND" };
+
       res.status(200).json(data);
     } catch (error) {
       next(error);
@@ -55,8 +58,7 @@ class Controller {
   }
   static async addInvoice(req, res, next) {
     try {
-      const { UserId, DriverId, total, subTotal, shippingCost, cart } =
-        req.body;
+      const { UserId, DriverId, total, subTotal, shippingCost, cart } = req.body;
       const isPaid = "belum";
       const isDelivered = "none";
       const invoice = await Invoice.create({

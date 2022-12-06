@@ -52,10 +52,7 @@ describe("/invoices", () => {
   };
 
   test("201 - success add customer", async () => {
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
 
     // console.log(response.body, "<<<<<<<<");
     expect(response.statusCode).toBe(201);
@@ -68,10 +65,7 @@ describe("/invoices", () => {
   });
 
   test("200 - success change status ispaid complete", async () => {
-    let response = await request(app)
-      .put("/invoices/statusPaid/2")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).put("/invoices/statusPaid/2").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
 
     // console.log(response.body, "<<<<<<<<");
     expect(response.statusCode).toBe(200);
@@ -84,9 +78,7 @@ describe("/invoices", () => {
   });
 
   test("200 - success change status isDelivere complete ", async () => {
-    let response = await request(app)
-      .put("/invoices/statusDeliveredComplete/2")
-      .set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).put("/invoices/statusDeliveredComplete/2").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
 
     // console.log(response.body, "<<<<<<<<");
@@ -99,30 +91,50 @@ describe("/invoices", () => {
     // expect(response.body).toHaveProperty("email", "hahaha@mail.com");
   });
 
+  test("200 - success get invoice by id", async () => {
+    let response = await request(app).get("/invoices/1");
+    console.log(response.body, "ini get all invoices by id <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<,");
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("id", 1);
+    expect(response.body).toHaveProperty("DriverId", 1);
+    expect(response.body).toHaveProperty("UserId", 1);
+    expect(response.body).toHaveProperty("isPaid", "lunas");
+    expect(response.body).toHaveProperty("isDelivered", "complete");
+    expect(response.body).toHaveProperty("shippingCost", 1000);
+    // expect(response.body).toHaveProperty("");
+  });
+
+  test("404 - canoot get invoice by id", async () => {
+    let response = await request(app).get("/invoices/100");
+    console.log(response.body, "ini get all invoices by id <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<,");
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("message", "INVOICE_NOT_FOUND");
+    // expect(response.body).toHaveProperty("");
+  });
+
   test("200 - success get all invoice by UserId ", async () => {
-    let response = await request(app)
-      .get("/invoices/users/1")
-      .set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).get("/invoices/users/1").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response.body, "<<<<<<<<");
     expect(response.statusCode).toBe(200);
-
     expect(response.body).toBeInstanceOf(Object);
     expect(Array.isArray(response.body));
-    expect(response.body[0]).toHaveProperty("id", 1);
+    expect(response.body[0]).toHaveProperty("id", 5);
     expect(response.body[0]).toHaveProperty("UserId", 1);
     expect(response.body[0]).toHaveProperty("DriverId", 1);
-    expect(response.body[0]).toHaveProperty("total", 9000);
-    expect(response.body[0]).toHaveProperty("isPaid", "lunas");
-    expect(response.body[0]).toHaveProperty("isDelivered", "complete");
-    expect(response.body[0]).toHaveProperty("subTotal", 8000);
+    expect(response.body[0]).toHaveProperty("total", 1000);
+    expect(response.body[0]).toHaveProperty("isPaid", "belum");
+    expect(response.body[0]).toHaveProperty("isDelivered", "none");
+    expect(response.body[0]).toHaveProperty("subTotal", 2000);
     expect(response.body[0]).toHaveProperty("shippingCost", 1000);
   });
 
   test("200 - success get all invoice by DriverID ", async () => {
-    let response = await request(app)
-      .get("/invoices/drivers/1")
-      .set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).get("/invoices/drivers/1").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
 
     // console.log(response.body, "<<<<<<<<");
@@ -130,23 +142,20 @@ describe("/invoices", () => {
 
     expect(response.body).toBeInstanceOf(Object);
     expect(Array.isArray(response.body));
-    expect(response.body[0]).toHaveProperty("id", 1);
+    expect(response.body[0]).toHaveProperty("id", 5);
     expect(response.body[0]).toHaveProperty("UserId", 1);
     expect(response.body[0]).toHaveProperty("DriverId", 1);
-    expect(response.body[0]).toHaveProperty("total", 9000);
-    expect(response.body[0]).toHaveProperty("isPaid", "lunas");
-    expect(response.body[0]).toHaveProperty("isDelivered", "complete");
-    expect(response.body[0]).toHaveProperty("subTotal", 8000);
+    expect(response.body[0]).toHaveProperty("total", 1000);
+    expect(response.body[0]).toHaveProperty("isPaid", "belum");
+    expect(response.body[0]).toHaveProperty("isDelivered", "none");
+    expect(response.body[0]).toHaveProperty("subTotal", 2000);
     expect(response.body[0]).toHaveProperty("shippingCost", 1000);
   });
 
   test("400 - UserId cannot be empty", async () => {
     objInvoice.UserId = "";
     // console.log("Ppppppppppppppppppppppppppppppp");
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.statusCode, "<<<<<<<<");
@@ -158,10 +167,7 @@ describe("/invoices", () => {
   test("400 - UserId cannot be Null", async () => {
     objInvoice.UserId = null;
     console.log("Ppppppppppppppppppppppppppppppp");
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.statusCode, "<<<<<<<<");
@@ -175,10 +181,7 @@ describe("/invoices", () => {
     objInvoice.DriverId = "";
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.body, "<<<<<<<<");
@@ -191,10 +194,7 @@ describe("/invoices", () => {
     objInvoice.DriverId = null;
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.body, "<<<<<<<<");
@@ -208,10 +208,7 @@ describe("/invoices", () => {
     objInvoice.total = null;
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.body, "<<<<<<<<");
@@ -226,10 +223,7 @@ describe("/invoices", () => {
     objInvoice.total = "";
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.body, "<<<<<<<<");
@@ -244,10 +238,7 @@ describe("/invoices", () => {
     objInvoice.subTotal = null;
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.body, "<<<<<<<<");
@@ -263,10 +254,7 @@ describe("/invoices", () => {
     objInvoice.subTotal = "";
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.body, "<<<<<<<<");
@@ -282,10 +270,7 @@ describe("/invoices", () => {
     objInvoice.shippingCost = null;
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.body, "<<<<<<<<");
@@ -302,27 +287,19 @@ describe("/invoices", () => {
     objInvoice.shippingCost = "";
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .post("/invoices")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send(objInvoice);
+    let response = await request(app).post("/invoices").set("Accept", "application/x-www-form-urlencoded").send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     // console.log(response.body, "<<<<<<<<");
     expect(response.status).toBe(400);
     expect(response.body).toBeInstanceOf(Object);
-    expect(response.body).toHaveProperty(
-      "message",
-      "shippingCost cannot Empty"
-    );
+    expect(response.body).toHaveProperty("message", "shippingCost cannot Empty");
   });
 
   test("404 - change Status with id not found", async () => {
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .put("/invoices/statusPaid/99")
-      .set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).put("/invoices/statusPaid/99").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
@@ -334,9 +311,7 @@ describe("/invoices", () => {
   test("404 - change Status deliver with id not found", async () => {
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .put("/invoices/statusDeliveredComplete/99")
-      .set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).put("/invoices/statusDeliveredComplete/99").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
@@ -349,9 +324,7 @@ describe("/invoices", () => {
   test("404 - change Status deliver with id not found", async () => {
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .put("/invoices/statusDeliveredComplete/99")
-      .set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).put("/invoices/statusDeliveredComplete/99").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
@@ -363,9 +336,7 @@ describe("/invoices", () => {
   test("404 - Get All Invoice By UserId", async () => {
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .get("/invoices/users/99")
-      .set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).get("/invoices/users/99").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
@@ -377,9 +348,7 @@ describe("/invoices", () => {
   test("404 - Get All Invoice By DriverId", async () => {
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app)
-      .get("/invoices/drivers/99")
-      .set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).get("/invoices/drivers/99").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
@@ -392,10 +361,7 @@ describe("/invoices", () => {
   test("200 - Get All Invoice By DriverId", async () => {
     // console.log("Ppppppppppppppppppppppppppppppp");
     // console.log(objInvoice);
-    let response = await request(app)
-      .post("/payments")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send({ gross_amount: 1000 });
+    let response = await request(app).post("/payments").set("Accept", "application/x-www-form-urlencoded").send({ gross_amount: 1000 });
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     console.log(response.body, "<<<<<<<<");
@@ -406,10 +372,7 @@ describe("/invoices", () => {
   test("400 - Get All Invoice By DriverId", async () => {
     // console.log("Ppppppppppppppppppppppppppppppp");
     // console.log(objInvoice);
-    let response = await request(app)
-      .post("/payments")
-      .set("Accept", "application/x-www-form-urlencoded")
-      .send({ gross_amount: 0 });
+    let response = await request(app).post("/payments").set("Accept", "application/x-www-form-urlencoded").send({ gross_amount: 0 });
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     console.log(response.body, "<<<<<<<<");

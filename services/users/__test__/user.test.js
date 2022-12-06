@@ -318,3 +318,51 @@ describe("GET/drivers/:id", () => {
     expect(response.body).toHaveProperty("message", "driver with id 22 is not found");
   });
 });
+
+describe("POST/logs", () => {
+  const objLog = {
+    messageNotification: "hello world",
+    UserId: 1,
+  };
+
+  test("201 - success adding invoices", async () => {
+    let response = await request(app).post("/logs").set("Accept", "application/x-www-form-urlencoded").send(objLog);
+
+    expect(response.statusCode).toBe(201);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("UserId", 1);
+    expect(response.body).toHaveProperty("messageNotification", "hello world");
+  });
+
+  test("400 - UserId is null", async () => {
+    let response = await request(app).post("/logs").set("Accept", "application/x-www-form-urlencoded").send({
+      messageNotification: "hello world",
+      UserId: null,
+    });
+
+    expect(response.statusCode).toBe(400);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("message", "UserId cannot be null");
+  });
+});
+
+describe("GET/logs/:UserId", () => {
+  test("200 - success get logs", async () => {
+    let response = await request(app).get("/logs/1");
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeInstanceOf(Array);
+    expect(response.body[0]).toHaveProperty;
+    "UserId", 1;
+    expect(response.body[0]).toHaveProperty;
+    "messageNotification", "hello world";
+  });
+
+  test("404 - cannot get logs", async () => {
+    let response = await request(app).get("/logs/99");
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("message", "logs with id 99 is not found");
+  });
+});

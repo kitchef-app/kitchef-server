@@ -5,7 +5,6 @@ const Controller = require("../controllers/invoiceController");
 //   res.send("hello World ini invoices");
 // });
 
-// router.get("/:id", Controller.getInvoiceById);
 router.post("/", Controller.addInvoice);
 router.put("/statusPaid/:id", Controller.changeStatusInvoice);
 router.put(

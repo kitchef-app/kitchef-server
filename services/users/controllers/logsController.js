@@ -17,7 +17,9 @@ class Controller {
     try {
       const data = await Log.findAll({ where: { UserId } });
 
-      res.status(200).json(data)
+      if (data.length === 0) throw { name: "DATA_NOT_FOUND", id: UserId, data: "logs" };
+
+      res.status(200).json(data);
     } catch (error) {
       next(error);
     }
