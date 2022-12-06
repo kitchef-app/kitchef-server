@@ -19,7 +19,11 @@ type User {
   email: String,
   phoneNumber: String,
   address: String,
-  location: String ,
+  location: location,
+}
+type location{
+  type:String,
+  coordinates:[String]
 }
 
 type LoginResult {
@@ -52,7 +56,7 @@ input LoginForm {
 
 
 type Query {
-  getUserById(_id:ID): User,
+  getUserById(_id:Int): User,
   getLogsByUserId(LogsUserId: ID): [Logs]
 }
 
@@ -67,8 +71,7 @@ const resolvers = {
     getUserById: async (_, args) => {
       try {
         const { _id } = args;
-        // console.log(_id, "ini dari args by id");
-
+        console.log(_id, "ini dari args by id");
         const { data } = await axios.get(`${userLocalhost}/users/${_id}`);
 
         return data;
@@ -92,7 +95,10 @@ const resolvers = {
       const { userInput } = args;
       console.log(userInput);
       try {
-        const { data } = await axios.post(`${userLocalhost}/users/register`, userInput);
+        const { data } = await axios.post(
+          `${userLocalhost}/users/register`,
+          userInput
+        );
 
         console.log(data);
         return `success adding user with email ${data.email}`;
@@ -104,7 +110,10 @@ const resolvers = {
       const { userLogin } = args;
       console.log(userLogin);
       try {
-        const { data } = await axios.post(`${userLocalhost}/users/login`, userLogin);
+        const { data } = await axios.post(
+          `${userLocalhost}/users/login`,
+          userLogin
+        );
 
         console.log(data);
         return data;

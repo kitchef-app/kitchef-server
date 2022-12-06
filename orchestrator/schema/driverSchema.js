@@ -19,9 +19,12 @@ type Driver {
   email: String,
   phoneNumber: String,
   address: String,
-  location: String ,
+  location: location ,
 }
-
+type location{
+  type:String,
+  coordinates:[String]
+}
 type LoginResult {
   access_token: String,
   email: String,
@@ -47,7 +50,7 @@ input LoginForm {
 
 
 type Query {
-  getDriverById(_id:ID): User,
+  getDriverById(_id:Int): User,
 }
 
 type Mutation {
@@ -61,7 +64,7 @@ const resolvers = {
     getDriverById: async (_, args) => {
       try {
         const { _id } = args;
-        // console.log(_id, "ini dari args by id");
+        console.log(_id, "ini dari args by id");
 
         const { data } = await axios.get(`${userLocalhost}/users/${_id}`);
 

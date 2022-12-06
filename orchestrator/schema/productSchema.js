@@ -20,13 +20,19 @@ type Product {
   imageUrl: String,
   description: String
 }
-
+type invoice{
+  InvoiceId:Int,
+  ProductId:Int,
+  total:Int
+  Product:Product
+}
 input Total {
   total: Int
 }
 
 type Query {
   getProducts: [Product],
+  getInvoiceProducts(InvoiceId:Int):[invoice]
 }
 
 
@@ -45,13 +51,28 @@ const resolvers = {
         console.log(error);
       }
     },
+    getInvoiceProducts: async (_, args) => {
+      try {
+        const { InvoiceId } = args;
+        console.log(args);
+        const { data } = await axios.get(
+          `${appLocalhost}/products/invoice/${InvoiceId}`
+        );
+        return data;
+      } catch (error) {
+        // console.log(error);
+      }
+    },
   },
   Mutation: {
     editProductStock: async (_, args) => {
       const { ProductId, total } = args;
       console.log(args);
       try {
-        const { data } = await axios.put(`${appLocalhost}/products/stok/${ProductId}`, total);
+        const { data } = await axios.put(
+          `${appLocalhost}/products/stok/${ProductId}`,
+          total
+        );
 
         console.log(data);
         return data;
