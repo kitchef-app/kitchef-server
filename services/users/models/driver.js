@@ -72,7 +72,9 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: { msg: "phone number cannot be empty" },
         },
       },
+      token: DataTypes.TEXT,
     },
+
     {
       sequelize,
       modelName: "Driver",

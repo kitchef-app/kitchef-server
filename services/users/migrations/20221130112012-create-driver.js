@@ -22,6 +22,9 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      token: {
+        type: Sequelize.TEXT,
+      },
       password: {
         type: Sequelize.STRING,
         allowNull: false,

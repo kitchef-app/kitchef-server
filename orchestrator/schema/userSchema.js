@@ -65,6 +65,7 @@ type Query {
 type Mutation {
   registerUser(userInput: UserForm): String
   loginUser(userLogin:LoginForm): LoginResult
+  editTokenUser(token: String,UserId:Int): String
 }
 `;
 
@@ -117,6 +118,21 @@ const resolvers = {
         return `success adding user with email ${data.email}`;
       } catch (error) {
         console.log(error);
+      }
+    },
+    editTokenUser: async (_, args) => {
+      const { token, UserId } = args;
+      // console.log(userInput);
+      console.log(args);
+      try {
+        const { data } = await axios.patch(`${userLocalhost}/users/${UserId}`, {
+          token,
+        });
+
+        console.log(data);
+        return `success edit`;
+      } catch (error) {
+        // console.log(error);
       }
     },
     loginUser: async (_, args) => {

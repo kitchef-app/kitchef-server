@@ -7,7 +7,8 @@
     "address": "devok indah",
     "location": "-6.269155349147892 106.78344145294695",
     "phoneNumber": "089312635127",
-    "role": "user"
+    "role": "user",
+    "token": "balbal"
   },
   {
     "fullName": "yosidir",
@@ -17,6 +18,7 @@
     "address": "kalimalanag",
     "location": "-6.269155349147892 106.78344145294695",
     "phoneNumber": "0895678127",
-    "role": "user"
+    "role": "user",
+    "token": "balbal"
   }
 ]
