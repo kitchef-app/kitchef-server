@@ -60,8 +60,8 @@ class Controller {
     try {
       const { UserId, DriverId, total, subTotal, shippingCost, cart } =
         req.body;
-      const isPaid = "belum";
-      const isDelivered = "none";
+      const isPaid = "Belum Dibayar";
+      const isDelivered = "Belum Dikirim";
       const invoice = await Invoice.create({
         UserId,
         DriverId,
@@ -91,8 +91,8 @@ class Controller {
       console.log(req.params);
       const data = await Invoice.update(
         {
-          isPaid: "Complete",
-          isDelivered: "Ongoing",
+          isPaid: "Sudah Dibayar",
+          isDelivered: "Sedang Dikirim",
         },
         { where: { id } }
       );
@@ -112,7 +112,7 @@ class Controller {
 
       const data = await Invoice.update(
         {
-          isDelivered: "Complete",
+          isDelivered: "Terkirim",
         },
         { where: { id } }
       );
