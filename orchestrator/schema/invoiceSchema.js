@@ -78,7 +78,7 @@ const resolvers = {
     },
     getInvoiceUser: async (_, args) => {
       const { UserId } = args;
-      console.log(UserId);
+      // console.log(UserId);
       try {
         const { data } = await axios.get(
           `${paymentLocalhost}/invoices/users/${UserId}`
@@ -87,7 +87,7 @@ const resolvers = {
         console.log(data);
         return data;
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
     getInvoiceDriver: async (_, args) => {
@@ -139,18 +139,20 @@ const resolvers = {
         );
 
         console.log(Invoice);
-        const { data: InvoiceById } = await axios.get(
-          `${paymentLocalhost}/invoices/users/${Invoice.InvoiceId}`
-        );
+        // const { data: InvoiceById } = await axios.get(
+        //   `${paymentLocalhost}/invoices/users/${Invoice.InvoiceId}`
+        // );
         // console.log("lontong");
-        console.log(InvoiceById);
+        // console.log(Invoice.invoice.UserId);
 
         const { data: Logs } = await axios.post(`${userLocalhost}/logs`, {
-          UserId: InvoiceById.UserId,
+          UserId: Invoice.UserId,
           messageNotification: `order is being prepared, order status is none (waiting for payment)`,
         });
+        // console.log(Logs);
         // await redis.del("invoices");
-        return InvoiceById;
+        console.log(Invoice);
+        return Invoice;
       } catch (error) {
         // console.log(error);
       }

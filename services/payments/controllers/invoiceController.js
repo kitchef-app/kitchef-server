@@ -25,13 +25,12 @@ class Controller {
       if (!cekid) {
         throw { name: "USER_NOT_FOUND" };
       }
+      const data = await Invoice.findAll({
+        where: { UserId },
+        order: [["id", "DESC"]],
+      });
 
-      // const data = await Invoice.findAll({
-      //   where: { UserId },
-      //   order: [["id", "DESC"]],
-      // });
-
-      res.status(200).json(cekid);
+      res.status(200).json(data);
     } catch (error) {
       console.log(error);
       next(error);
@@ -79,7 +78,7 @@ class Controller {
 
       await InvoiceProduct.bulkCreate(cart);
 
-      res.status(201).json({ InvoiceId: invoice.id });
+      res.status(201).json(invoice);
     } catch (error) {
       // console.log(error);
       next(error);
