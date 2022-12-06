@@ -10,5 +10,6 @@ router.post("/register", Controller.userRegister);
 router.post("/login", Controller.userLogin);
 
 router.get("/:id", Controller.findUserById);
+router.get("/", Controller.allUser);
 
 module.exports = router;

@@ -19,12 +19,12 @@ class Controller {
   static async getInvoiceByUserId(req, res, next) {
     const { UserId } = req.params;
     try {
+      // console.log(UserId);
       const cekid = await Invoice.findByPk(UserId);
       // console.log(cekid);
       if (!cekid) {
         throw { name: "USER_NOT_FOUND" };
       }
-
       const data = await Invoice.findAll({
         where: { UserId },
         order: [["id", "DESC"]],
@@ -58,9 +58,10 @@ class Controller {
   }
   static async addInvoice(req, res, next) {
     try {
-      const { UserId, DriverId, total, subTotal, shippingCost, cart } = req.body;
-      const isPaid = "belum";
-      const isDelivered = "none";
+      const { UserId, DriverId, total, subTotal, shippingCost, cart } =
+        req.body;
+      const isPaid = "Belum Dibayar";
+      const isDelivered = "Belum Dikirim";
       const invoice = await Invoice.create({
         UserId,
         DriverId,
@@ -75,9 +76,9 @@ class Controller {
       });
       // console.log(cart);
 
-      await InvoiceProduct.bulkCreate(cart);
+      // await InvoiceProduct.bulkCreate(cart);
 
-      res.status(201).json({ InvoiceId: invoice.id });
+      res.status(201).json(invoice);
     } catch (error) {
       // console.log(error);
       next(error);
@@ -90,8 +91,8 @@ class Controller {
       console.log(req.params);
       const data = await Invoice.update(
         {
-          isPaid: "Complete",
-          isDelivered: "Ongoing",
+          isPaid: "Sudah Dibayar",
+          isDelivered: "Sedang Dikirim",
         },
         { where: { id } }
       );
@@ -111,7 +112,7 @@ class Controller {
 
       const data = await Invoice.update(
         {
-          isDelivered: "Complete",
+          isDelivered: "Terkirim",
         },
         { where: { id } }
       );

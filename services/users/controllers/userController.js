@@ -101,6 +101,19 @@ class Controller {
       next(error);
     }
   }
+  static async allUser(req, res, next) {
+    console.log("lontonf");
+    // const { id } = req.params;
+    try {
+      const user = await User.findAll();
+
+      if (!user) throw { name: "DATA_NOT_FOUND", data: "user", id };
+
+      res.status(200).json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = Controller;

@@ -2,6 +2,9 @@ const axios = require("axios");
 const Redis = require("ioredis");
 const paymentLocalhost = "https://dandy-partner-production.up.railway.app";
 const userLocalhost = "https://kitchef-server-production.up.railway.app";
+const appLocalhost = "https://app-production-56fe.up.railway.app";
+// const appLocalhost = "http://localhost:3003";
+
 // const paymentLocalhost = "http://localhost:3002";
 
 const redis = new Redis({
@@ -56,7 +59,7 @@ type Query {
 }
 
 type Mutation {
-  addInvoice(invoiceInput: InvoiceForm): InvoiceId
+  addInvoice(invoiceInput: InvoiceForm): Invoice
   changeStatusInvoice(InvoiceId:Int): String
   changeStatusDeliveryInvoice(InvoiceDelId:Int): String
 }
@@ -78,7 +81,7 @@ const resolvers = {
     },
     getInvoiceUser: async (_, args) => {
       const { UserId } = args;
-      console.log(UserId);
+      // console.log(UserId);
       try {
         const { data } = await axios.get(
           `${paymentLocalhost}/invoices/users/${UserId}`
@@ -87,7 +90,7 @@ const resolvers = {
         console.log(data);
         return data;
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
     getInvoiceDriver: async (_, args) => {
@@ -108,7 +111,9 @@ const resolvers = {
         //   return data;
         // }
         console.log(args);
-        const { data } = await axios.get(`${paymentLocalhost}/invoices/drivers/${DriverId}`);
+        const { data } = await axios.get(
+          `${paymentLocalhost}/invoices/drivers/${DriverId}`
+        );
 
         return data;
       } catch (error) {
@@ -130,27 +135,51 @@ const resolvers = {
     addInvoice: async (_, args) => {
       const { invoiceInput } = args;
       try {
-        const { data: Invoice } = await axios.post(`${paymentLocalhost}/invoices`, invoiceInput);
-
-        const { data: InvoiceById } = await axios.get(`${paymentLocalhost}/invoices/usersid/${Invoice.InvoiceId}`);
-        console.log(InvoiceById);
+        // console.log(args);
+        const { data: Invoice } = await axios.post(
+          `${paymentLocalhost}/invoices`,
+          invoiceInput
+        );
+        // const newCart =
+        console.log(Invoice.id);
+        const newCart = invoiceInput.cart;
+        // newCart.InvoiceId = Invoice.id;
+        newCart.forEach((el) => {
+          el.InvoiceId = Invoice.id;
+        });
+        // console.log(newCart);
+        // console.log(invoiceInput.cart);
+        // const newCart = invoiceInput
+        const { data } = await axios.post(
+          `${appLocalhost}/products/invoiceProduct`,
+          { cart: newCart }
+        );
+        // console.log(Invoice);
+        // const { data: InvoiceById } = await axios.get(
+        //   `${paymentLocalhost}/invoices/users/${Invoice.InvoiceId}`
+        // );
+        // console.log("lontong");
+        // console.log(Invoice.invoice.UserId);
 
         const { data: Logs } = await axios.post(`${userLocalhost}/logs`, {
-          UserId: InvoiceById.UserId,
+          UserId: Invoice.UserId,
           messageNotification: `order is being prepared, order status is none (waiting for payment)`,
         });
-
+        // console.log(Logs);
         // await redis.del("invoices");
+        console.log(Invoice);
         return Invoice;
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
     changeStatusInvoice: async (_, args) => {
       const { InvoiceId } = args;
       try {
         console.log(args);
-        const { data: Invoice } = await axios.put(`${paymentLocalhost}/invoices/statusPaid/${InvoiceId}`);
+        const { data: Invoice } = await axios.put(
+          `${paymentLocalhost}/invoices/statusPaid/${InvoiceId}`
+        );
 
         const { data: Logs } = await axios.post(`${userLocalhost}/logs`, {
           UserId: InvoiceId,
@@ -166,7 +195,9 @@ const resolvers = {
     changeStatusDeliveryInvoice: async (_, args) => {
       const { InvoiceDelId } = args;
       try {
-        const { data: Invoice } = await axios.put(`${paymentLocalhost}/invoices/statusDeliveredComplete/${InvoiceDelId}`);
+        const { data: Invoice } = await axios.put(
+          `${paymentLocalhost}/invoices/statusDeliveredComplete/${InvoiceDelId}`
+        );
 
         // await redis.del("invoices");
         const { data: Logs } = await axios.post(`${userLocalhost}/logs`, {

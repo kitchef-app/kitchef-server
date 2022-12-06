@@ -24,6 +24,24 @@ class Controller {
       next(error);
     }
   }
+  static async postInvoiceProduct(req, res, next) {
+    try {
+      const { cart } = req.body;
+      console.log("pol");
+      console.log(cart);
+      // const data = await InvoiceProduct.findAll({
+      //   where: { InvoiceId },
+      //   include: Product,
+      // });
+      const data = await InvoiceProduct.bulkCreate(cart);
+
+      // console.log(data);
+      res.status(200).json(data);
+    } catch (error) {
+      next(error);
+      console.log(error);
+    }
+  }
   static async editStock(req, res, next) {
     const { id } = req.params;
     const { total } = req.body;

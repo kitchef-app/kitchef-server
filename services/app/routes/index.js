@@ -9,7 +9,7 @@ router.use("/dishes", dishRouter);
 router.use("/categories", categoryRouter);
 
 router.use("/products", productRouter);
-// router.use("/products", productRouter);
+// router.use("/InvoiceProducts", productRouter);
 
 router.use(errors);
 

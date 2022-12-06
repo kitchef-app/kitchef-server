@@ -7,6 +7,7 @@ const Controller = require("../controllers/productController");
 
 router.get("/", Controller.getProduct);
 router.get("/invoice/:InvoiceId", Controller.getInvoiceProduct);
+router.post("/invoiceProduct", Controller.postInvoiceProduct);
 
 router.put("/stok/:id", Controller.editStock);
 
