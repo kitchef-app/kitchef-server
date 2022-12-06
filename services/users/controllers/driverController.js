@@ -52,15 +52,28 @@ class Controller {
   }
 
   static async driverRegister(req, res, next) {
-    const { fullName, username, email, password, address, phoneNumber, longitude = 0, latitude = 0 } = req.body;
+    const {
+      fullName,
+      username,
+      email,
+      password,
+      address,
+      phoneNumber,
+      longitude = 0,
+      latitude = 0,
+    } = req.body;
     try {
-      if (longitude === 0 || latitude === 0 || !longitude || !latitude) throw { name: "INPUT_LOCATION" };
+      if (longitude === 0 || latitude === 0 || !longitude || !latitude)
+        throw { name: "INPUT_LOCATION" };
       const createdDriver = await Driver.create({
         fullName,
         username,
         email,
         password,
-        location: Sequelize.fn("ST_GeomFromText", `POINT(${latitude} ${longitude})`),
+        location: Sequelize.fn(
+          "ST_GeomFromText",
+          `POINT(${latitude} ${longitude})`
+        ),
         phoneNumber,
         address,
       });
@@ -82,6 +95,18 @@ class Controller {
       if (!driver) throw { name: "DATA_NOT_FOUND", data: "driver", id };
 
       res.status(200).json(driver);
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async editTokenDriver(req, res, next) {
+    console.log("lontonf");
+    const { id } = req.params;
+    const { token } = req.body;
+    try {
+      const driver = await Driver.update({ token }, { where: { id } });
+
+      res.status(200).json({ msg: "berhasil update" });
     } catch (error) {
       next(error);
     }

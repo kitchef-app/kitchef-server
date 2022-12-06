@@ -10,5 +10,6 @@ router.post("/register", Controller.driverRegister);
 router.post("/login", Controller.driverLogin);
 
 router.get("/:id", Controller.findDriverById);
+router.patch("/:id", Controller.editTokenDriver);
 
 module.exports = router;

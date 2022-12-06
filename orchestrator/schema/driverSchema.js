@@ -1,7 +1,7 @@
 const axios = require("axios");
 const Redis = require("ioredis");
-const userLocalhost = "https://kitchef-server-production.up.railway.app";
-// const userLocalhost = "http://localhost:3001";
+// const userLocalhost = "https://kitchef-server-production.up.railway.app";
+const userLocalhost = "http://localhost:3001";
 
 const redis = new Redis({
   host: "redis-18717.c299.asia-northeast1-1.gce.cloud.redislabs.com", // Redis host
@@ -56,6 +56,9 @@ type Query {
 type Mutation {
   registerDriver(driverInput: DriverForm): String
   loginDriver(driverLogin:LoginForm): LoginResult
+  editTokenDriver(token: String,DriverId:Int): String
+
+  
 }
 `;
 
@@ -79,7 +82,10 @@ const resolvers = {
       const { driverInput } = args;
       console.log(driverInput);
       try {
-        const { data } = await axios.post(`${userLocalhost}/users/register`, driverInput);
+        const { data } = await axios.post(
+          `${userLocalhost}/users/register`,
+          driverInput
+        );
 
         console.log(data);
         return `success adding user with email ${data.email}`;
@@ -87,11 +93,33 @@ const resolvers = {
         console.log(error);
       }
     },
+    editTokenDriver: async (_, args) => {
+      const { token, DriverId } = args;
+      // console.log(userInput);
+      console.log(args);
+      try {
+        const { data } = await axios.patch(
+          `${userLocalhost}/drivers/${DriverId}`,
+          {
+            token,
+          }
+        );
+
+        console.log(data);
+        return `success edit`;
+      } catch (error) {
+        // console.log(error);
+      }
+    },
+
     loginDriver: async (_, args) => {
       const { driverLogin } = args;
       console.log(driverLogin);
       try {
-        const { data } = await axios.post(`${userLocalhost}/drivers/login`, driverLogin);
+        const { data } = await axios.post(
+          `${userLocalhost}/drivers/login`,
+          driverLogin
+        );
 
         console.log(data);
         return data;

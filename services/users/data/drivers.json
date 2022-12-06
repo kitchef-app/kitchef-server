@@ -6,7 +6,8 @@
     "password": "12345",
     "address": "devok indah",
     "location": "-6.269155349147892 106.78344145294695",
-    "phoneNumber": "089312635127"
+    "phoneNumber": "089312635127",
+    "token": "balbal"
   },
   {
     "fullName": "bopaque",
@@ -15,6 +16,7 @@
     "password": "12345",
     "address": "kalimalanag",
     "location": "-6.269155349147892 106.78344145294695",
-    "phoneNumber": "0895678127"
+    "phoneNumber": "0895678127",
+    "token": "bibubibu"
   }
 ]

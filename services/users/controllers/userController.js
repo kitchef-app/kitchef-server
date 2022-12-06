@@ -114,6 +114,18 @@ class Controller {
       next(error);
     }
   }
+  static async editTokenUser(req, res, next) {
+    console.log("lontonf");
+    const { id } = req.params;
+    const { token } = req.body;
+    try {
+      const user = await User.update({ token }, { where: { id } });
+
+      res.status(200).json({ msg: "berhasil update" });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = Controller;

@@ -11,5 +11,7 @@ router.post("/login", Controller.userLogin);
 
 router.get("/:id", Controller.findUserById);
 router.get("/", Controller.allUser);
+router.patch("/:id", Controller.editTokenUser);
+// router.get("/", Controller.allUser);
 
 module.exports = router;
