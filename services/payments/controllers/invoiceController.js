@@ -19,18 +19,19 @@ class Controller {
   static async getInvoiceByUserId(req, res, next) {
     const { UserId } = req.params;
     try {
+      // console.log(UserId);
       const cekid = await Invoice.findByPk(UserId);
       // console.log(cekid);
       if (!cekid) {
         throw { name: "USER_NOT_FOUND" };
       }
 
-      const data = await Invoice.findAll({
-        where: { UserId },
-        order: [["id", "DESC"]],
-      });
+      // const data = await Invoice.findAll({
+      //   where: { UserId },
+      //   order: [["id", "DESC"]],
+      // });
 
-      res.status(200).json(data);
+      res.status(200).json(cekid);
     } catch (error) {
       console.log(error);
       next(error);
@@ -58,7 +59,8 @@ class Controller {
   }
   static async addInvoice(req, res, next) {
     try {
-      const { UserId, DriverId, total, subTotal, shippingCost, cart } = req.body;
+      const { UserId, DriverId, total, subTotal, shippingCost, cart } =
+        req.body;
       const isPaid = "belum";
       const isDelivered = "none";
       const invoice = await Invoice.create({
