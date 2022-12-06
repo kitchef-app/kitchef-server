@@ -20,6 +20,7 @@ type User {
   phoneNumber: String,
   address: String,
   location: location,
+  id:ID
 }
 type location{
   type:String,
@@ -56,6 +57,7 @@ input LoginForm {
 
 
 type Query {
+  getUserAll:[User]
   getUserById(_id:Int): User,
   getLogsByUserId(LogsUserId: ID): [Logs]
 }
@@ -68,6 +70,17 @@ type Mutation {
 
 const resolvers = {
   Query: {
+    getUserAll: async (_, args) => {
+      try {
+        // const { _id } = args;
+        // console.log(_id, "ini dari args by id");
+        const { data } = await axios.get(`${userLocalhost}/users`);
+
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     getUserById: async (_, args) => {
       try {
         const { _id } = args;
