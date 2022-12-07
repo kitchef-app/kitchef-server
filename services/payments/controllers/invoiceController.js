@@ -39,12 +39,12 @@ class Controller {
   static async getInvoiceByDriverId(req, res, next) {
     const { DriverId } = req.params;
     try {
-      console.log(DriverId);
-      const cekid = await Invoice.findByPk(DriverId);
-      // console.log(cekid);
-      if (!cekid) {
-        throw { name: "USER_NOT_FOUND" };
-      }
+      // console.log(DriverId);
+      // const cekid = await Invoice.findByPk(DriverId);
+      // // console.log(cekid);
+      // if (!cekid) {
+      //   throw { name: "USER_NOT_FOUND" };
+      // }
 
       const data = await Invoice.findAll({
         where: { DriverId },
