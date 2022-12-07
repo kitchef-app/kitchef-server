@@ -21,7 +21,8 @@ type Dish {
   listIngredients: [Ingredients],
   listTools: [Tools],
   Products: [Product],
-  steps: [Steps]
+  steps: [Steps],
+  Category: Category
 }
 
 type DishDetail {
@@ -36,6 +37,11 @@ type DishDetail {
   Products: [Product],
   steps: [Steps]
 } 
+
+type Category {
+  name: String,
+  imageUrl: String
+}
 
 type Product {
   id: ID,
