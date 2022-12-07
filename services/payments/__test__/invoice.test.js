@@ -128,8 +128,8 @@ describe("/invoices", () => {
     expect(response.body[0]).toHaveProperty("UserId", 1);
     expect(response.body[0]).toHaveProperty("DriverId", 1);
     expect(response.body[0]).toHaveProperty("total", 1000);
-    expect(response.body[0]).toHaveProperty("isPaid", "belum");
-    expect(response.body[0]).toHaveProperty("isDelivered", "none");
+    expect(response.body[0]).toHaveProperty("isPaid", "Belum Dibayar");
+    expect(response.body[0]).toHaveProperty("isDelivered", "Belum Dikirim");
     expect(response.body[0]).toHaveProperty("subTotal", 2000);
     expect(response.body[0]).toHaveProperty("shippingCost", 1000);
   });
@@ -147,8 +147,8 @@ describe("/invoices", () => {
     expect(response.body[0]).toHaveProperty("UserId", 1);
     expect(response.body[0]).toHaveProperty("DriverId", 1);
     expect(response.body[0]).toHaveProperty("total", 1000);
-    expect(response.body[0]).toHaveProperty("isPaid", "belum");
-    expect(response.body[0]).toHaveProperty("isDelivered", "none");
+    expect(response.body[0]).toHaveProperty("isPaid", "Belum Dibayar");
+    expect(response.body[0]).toHaveProperty("isDelivered", "Belum Dikirim");
     expect(response.body[0]).toHaveProperty("subTotal", 2000);
     expect(response.body[0]).toHaveProperty("shippingCost", 1000);
   });
