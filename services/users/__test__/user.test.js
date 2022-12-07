@@ -359,6 +359,7 @@ describe("POST/logs", () => {
   const objLog = {
     messageNotification: "hello world",
     UserId: 1,
+    InvoiceId: 1,
   };
 
   test("201 - success adding invoices", async () => {
@@ -367,6 +368,7 @@ describe("POST/logs", () => {
     expect(response.statusCode).toBe(201);
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body).toHaveProperty("UserId", 1);
+    expect(response.body).toHaveProperty("InvoiceId", 1);
     expect(response.body).toHaveProperty("messageNotification", "hello world");
   });
 
@@ -388,10 +390,9 @@ describe("GET/logs/:UserId", () => {
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toBeInstanceOf(Array);
-    expect(response.body[0]).toHaveProperty;
-    "UserId", 1;
-    expect(response.body[0]).toHaveProperty;
-    "messageNotification", "hello world";
+    expect(response.body[0]).toHaveProperty("UserId", 1);
+    expect(response.body[0]).toHaveProperty("InvoiceId", 1);
+    expect(response.body[0]).toHaveProperty("messageNotification", "hello world");
   });
 
   test("404 - cannot get logs", async () => {
