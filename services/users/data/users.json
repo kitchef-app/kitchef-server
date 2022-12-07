@@ -1,22 +1,11 @@
 [
   {
-    "fullName": "adamhani",
-    "username": "adamair",
-    "email": "adam@gmail.com",
-    "password": "123",
-    "address": "devok indah",
-    "location": "-6.269155349147892 106.78344145294695",
-    "phoneNumber": "089312635127",
-    "role": "user",
-    "token": "balbal"
-  },
-  {
-    "fullName": "yosidir",
-    "username": "yosinaga",
-    "email": "yosi@gmail.com",
-    "password": "123",
-    "address": "kalimalanag",
-    "location": "-6.269155349147892 106.78344145294695",
+    "fullName": "Dian Tari",
+    "username": "diantari",
+    "email": "dian@gmail.com",
+    "password": "diantari",
+    "address": "Gandaria City, Jln. Arteri",
+    "location": "-6.2442 106.7835",
     "phoneNumber": "0895678127",
     "role": "user",
     "token": "balbal"

@@ -20,11 +20,11 @@ class Controller {
     const { UserId } = req.params;
     try {
       // console.log(UserId);
-      const cekid = await Invoice.findByPk(UserId);
-      // console.log(cekid);
-      if (!cekid) {
-        throw { name: "USER_NOT_FOUND" };
-      }
+      // const cekid = await Invoice.findByPk(UserId);
+      // // console.log(cekid);
+      // if (!cekid) {
+      //   throw { name: "USER_NOT_FOUND" };
+      // }
       const data = await Invoice.findAll({
         where: { UserId },
         order: [["id", "DESC"]],
