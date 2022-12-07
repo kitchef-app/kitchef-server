@@ -20,6 +20,7 @@ type User {
   phoneNumber: String,
   address: String,
   location: location,
+  token:String
   id:ID
 }
 type location{
@@ -73,13 +74,14 @@ const resolvers = {
   Query: {
     getUserAll: async (_, args) => {
       try {
+        // console.log("lont");
         // const { _id } = args;
         // console.log(_id, "ini dari args by id");
         const { data } = await axios.get(`${userLocalhost}/users`);
 
         return data;
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
     getUserById: async (_, args) => {

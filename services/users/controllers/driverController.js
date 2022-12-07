@@ -90,6 +90,7 @@ class Controller {
   static async findDriverById(req, res, next) {
     const { id } = req.params;
     try {
+      // console.log("ihza");
       const driver = await Driver.findByPk(id);
 
       if (!driver) throw { name: "DATA_NOT_FOUND", data: "driver", id };
