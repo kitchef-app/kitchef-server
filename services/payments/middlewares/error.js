@@ -17,10 +17,6 @@ async function errors(error, req, res, next) {
       code = 404;
       message = `INVOICE_NOT_FOUND`;
       break;
-    case "USER_NOT_FOUND":
-      code = 404;
-      message = `USER_NOT_FOUND`;
-      break;
     default:
       code = 500;
       message = "Internal Server Error";

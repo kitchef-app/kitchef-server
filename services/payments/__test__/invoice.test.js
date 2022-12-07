@@ -334,29 +334,30 @@ describe("/invoices", () => {
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body).toHaveProperty("message", "INVOICE_NOT_FOUND");
   });
-  test("404 - Get All Invoice By UserId", async () => {
-    // console.log("Ppppppppppppppppppppppppppppppp");
-    console.log(objInvoice);
-    let response = await request(app).get("/invoices/users/99").set("Accept", "application/x-www-form-urlencoded");
+  test("500 - Error Get All Invoice By UserId", async () => {
+    jest.spyOn(Invoice, "findAll").mockRejectedValue("Error");
+
+    let response = await request(app).get("/invoices/users/1").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     console.log(response.body, "<<<<<<<<");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(500);
     expect(response.body).toBeInstanceOf(Object);
-    expect(response.body).toHaveProperty("message", "USER_NOT_FOUND");
+    expect(response.body).toHaveProperty("message", "Internal Server Error");
   });
-  test("404 - Get All Invoice By DriverId", async () => {
+  test("500 - Error Get All Invoice By DriverId", async () => {
+    jest.spyOn(Invoice, "findAll").mockRejectedValue("Error");
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app).get("/invoices/drivers/99").set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).get("/invoices/drivers/1").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     console.log(response.body, "<<<<<<<<");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(500);
     expect(response.body).toBeInstanceOf(Object);
-    expect(response.body).toHaveProperty("message", "USER_NOT_FOUND");
+    expect(response.body).toHaveProperty("message", "Internal Server Error");
   });
 
   test("200 - Get All Invoice By DriverId", async () => {
