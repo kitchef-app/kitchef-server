@@ -402,3 +402,47 @@ describe("GET/logs/:UserId", () => {
     expect(response.body).toHaveProperty("message", "logs with id 99 is not found");
   });
 });
+
+describe("PATCH/users/:id", () => {
+  test("200 - success update user token", async () => {
+    let response = await request(app).patch("/users/1").set("Accept", "application/x-www-form-urlencoded").send({
+      token: "testingtoken-xyz",
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("msg", "berhasil update");
+  });
+
+  test("404 - cannot find user", async () => {
+    let response = await request(app).patch("/users/99").set("Accept", "application/x-www-form-urlencoded").send({
+      token: "testingtoken-xyz",
+    });
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("message", "user with id 99 is not found");
+  });
+});
+
+describe("PATCH/drivers/:id", () => {
+  test("200 - success update driver token", async () => {
+    let response = await request(app).patch("/drivers/1").set("Accept", "application/x-www-form-urlencoded").send({
+      token: "testingtoken-xyz",
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("msg", "berhasil update");
+  });
+
+  test("404 - cannot find driver", async () => {
+    let response = await request(app).patch("/drivers/99").set("Accept", "application/x-www-form-urlencoded").send({
+      token: "testingtoken-xyz",
+    });
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("message", "user with id 99 is not found");
+  });
+});

@@ -51,8 +51,9 @@ class Controller {
   }
 
   static async userRegister(req, res, next) {
-    const { fullName, username, email, password, address, phoneNumber, longitude = 0, latitude = 0 } = req.body;
+    const { fullName, username, email, password, address, phoneNumber, longitude, latitude } = req.body;
     let role = "user";
+    console.log(longitude, latitude);
     try {
       if (longitude === 0 || latitude === 0 || !longitude || !latitude) throw { name: "INPUT_LOCATION" };
       const createdUser = await User.create({
@@ -103,6 +104,10 @@ class Controller {
     const { id } = req.params;
     const { token } = req.body;
     try {
+      const data = await User.findByPk(id);
+
+      if (!data) throw { name: "DATA_NOT_FOUND", id, data: "user" };
+
       const user = await User.update({ token }, { where: { id } });
 
       res.status(200).json({ msg: "berhasil update" });
