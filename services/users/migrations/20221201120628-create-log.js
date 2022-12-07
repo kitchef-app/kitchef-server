@@ -17,6 +17,10 @@ module.exports = {
           key: "id",
         },
       },
+      InvoiceId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       messageNotification: {
         type: Sequelize.TEXT,
         allowNull: false,

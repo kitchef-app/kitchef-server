@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: { msg: "UserId cannot be empty" },
         },
       },
+      InvoiceId: DataTypes.INTEGER,
       messageNotification: {
         type: DataTypes.TEXT,
         allowNull: false,
