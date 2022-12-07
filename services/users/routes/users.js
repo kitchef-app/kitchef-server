@@ -9,8 +9,8 @@ router.post("/register", Controller.userRegister);
 
 router.post("/login", Controller.userLogin);
 
-router.get("/:id", Controller.findUserById);
 router.get("/", Controller.allUser);
+router.get("/:id", Controller.findUserById);
 router.patch("/:id", Controller.editTokenUser);
 // router.get("/", Controller.allUser);
 

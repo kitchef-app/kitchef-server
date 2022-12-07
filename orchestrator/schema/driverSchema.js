@@ -20,6 +20,7 @@ type Driver {
   phoneNumber: String,
   address: String,
   location: location ,
+  token:String
 }
 type location{
   type:String,
@@ -69,11 +70,11 @@ const resolvers = {
         const { _id } = args;
         console.log(_id, "ini dari args by id");
 
-        const { data } = await axios.get(`${userLocalhost}/users/${_id}`);
+        const { data } = await axios.get(`${userLocalhost}/drivers/${_id}`);
 
         return data;
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
   },
