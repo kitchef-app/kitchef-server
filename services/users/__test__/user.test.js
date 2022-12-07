@@ -1,5 +1,6 @@
 const { sequelize } = require("../models/index");
 const { queryInterface } = sequelize;
+const { User } = require("../models/index");
 const request = require("supertest");
 const app = require("../app");
 // const { createToken } = require("../helpers/jwt");
@@ -25,7 +26,9 @@ beforeAll(() => {
   );
 });
 
-afterAll(() => {});
+beforeEach(() => {
+  jest.restoreAllMocks();
+});
 
 describe("/POST/users/register", () => {
   const objCustomer = {
@@ -277,6 +280,39 @@ describe("POST /drivers/login", () => {
   });
 });
 
+describe("GET/users", () => {
+  test("200 - success get users", async () => {
+    let response = await request(app).get("/users");
+
+    const objCustomer = {
+      fullName: "IdamIdam",
+      username: "Idam",
+      email: "hahaha@mail.com",
+      phoneNumber: "12314135151",
+      password: "amanaa",
+      address: "disana",
+      longitude: "-6.277533",
+      latitude: "106.779493",
+    };
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeInstanceOf(Array);
+    expect(response.body[0]).toHaveProperty("fullName", "IdamIdam");
+    expect(response.body[0]).toHaveProperty("username", "Idam");
+    expect(response.body[0]).toHaveProperty("email", "hahaha@mail.com");
+    expect(response.body[0]).toHaveProperty("phoneNumber", "12314135151");
+    expect(response.body[0]).toHaveProperty("address", "disana");
+  });
+
+  test("500 - cannot get data", async () => {
+    jest.spyOn(User, "findAll").mockRejectedValue("Error");
+
+    let response = await request(app).get("/users");
+
+    expect(response.statusCode).toBe(500);
+  });
+});
+
 describe("GET/users/:id", () => {
   test("200 - get user by id", async () => {
     let response = await request(app).get("/users/1");
@@ -323,6 +359,7 @@ describe("POST/logs", () => {
   const objLog = {
     messageNotification: "hello world",
     UserId: 1,
+    InvoiceId: 1,
   };
 
   test("201 - success adding invoices", async () => {
@@ -331,6 +368,7 @@ describe("POST/logs", () => {
     expect(response.statusCode).toBe(201);
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body).toHaveProperty("UserId", 1);
+    expect(response.body).toHaveProperty("InvoiceId", 1);
     expect(response.body).toHaveProperty("messageNotification", "hello world");
   });
 
@@ -352,10 +390,9 @@ describe("GET/logs/:UserId", () => {
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toBeInstanceOf(Array);
-    expect(response.body[0]).toHaveProperty;
-    "UserId", 1;
-    expect(response.body[0]).toHaveProperty;
-    "messageNotification", "hello world";
+    expect(response.body[0]).toHaveProperty("UserId", 1);
+    expect(response.body[0]).toHaveProperty("InvoiceId", 1);
+    expect(response.body[0]).toHaveProperty("messageNotification", "hello world");
   });
 
   test("404 - cannot get logs", async () => {
@@ -364,5 +401,49 @@ describe("GET/logs/:UserId", () => {
     expect(response.statusCode).toBe(404);
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body).toHaveProperty("message", "logs with id 99 is not found");
+  });
+});
+
+describe("PATCH/users/:id", () => {
+  test("200 - success update user token", async () => {
+    let response = await request(app).patch("/users/1").set("Accept", "application/x-www-form-urlencoded").send({
+      token: "testingtoken-xyz",
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("msg", "berhasil update");
+  });
+
+  test("404 - cannot find user", async () => {
+    let response = await request(app).patch("/users/99").set("Accept", "application/x-www-form-urlencoded").send({
+      token: "testingtoken-xyz",
+    });
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("message", "user with id 99 is not found");
+  });
+});
+
+describe("PATCH/drivers/:id", () => {
+  test("200 - success update driver token", async () => {
+    let response = await request(app).patch("/drivers/1").set("Accept", "application/x-www-form-urlencoded").send({
+      token: "testingtoken-xyz",
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("msg", "berhasil update");
+  });
+
+  test("404 - cannot find driver", async () => {
+    let response = await request(app).patch("/drivers/99").set("Accept", "application/x-www-form-urlencoded").send({
+      token: "testingtoken-xyz",
+    });
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty("message", "user with id 99 is not found");
   });
 });

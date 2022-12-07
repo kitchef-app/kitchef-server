@@ -20,6 +20,7 @@ type User {
   phoneNumber: String,
   address: String,
   location: location,
+  token:String
   id:ID
 }
 type location{
@@ -65,6 +66,7 @@ type Query {
 type Mutation {
   registerUser(userInput: UserForm): String
   loginUser(userLogin:LoginForm): LoginResult
+  editTokenUser(token: String,UserId:Int): String
 }
 `;
 
@@ -72,13 +74,14 @@ const resolvers = {
   Query: {
     getUserAll: async (_, args) => {
       try {
+        // console.log("lont");
         // const { _id } = args;
         // console.log(_id, "ini dari args by id");
         const { data } = await axios.get(`${userLocalhost}/users`);
 
         return data;
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
     getUserById: async (_, args) => {
@@ -117,6 +120,21 @@ const resolvers = {
         return `success adding user with email ${data.email}`;
       } catch (error) {
         console.log(error);
+      }
+    },
+    editTokenUser: async (_, args) => {
+      const { token, UserId } = args;
+      // console.log(userInput);
+      console.log(args);
+      try {
+        const { data } = await axios.patch(`${userLocalhost}/users/${UserId}`, {
+          token,
+        });
+
+        console.log(data);
+        return `success edit`;
+      } catch (error) {
+        // console.log(error);
       }
     },
     loginUser: async (_, args) => {

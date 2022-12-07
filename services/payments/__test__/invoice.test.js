@@ -1,20 +1,11 @@
 const { sequelize } = require("../models/index");
 const { queryInterface } = sequelize;
+const { Invoice } = require("../models/index");
 const request = require("supertest");
 const app = require("../app");
-// const { createToken } = require("../");
+const invoiceController = require("../controllers/invoiceController");
 
 beforeAll(() => {
-  // queryInterface.bulkDelete(
-  //   "Invoices",
-  //   {},
-  //   {
-  //     truncate: true,
-  //     cascade: true,
-  //     restartIdentity: true,
-  //   }
-  // );
-
   const fs = require("fs");
   let dataInvoices = JSON.parse(fs.readFileSync("./data/invoices.json"));
   dataInvoices.forEach((el) => {
@@ -24,6 +15,10 @@ beforeAll(() => {
   });
 
   queryInterface.bulkInsert("Invoices", dataInvoices);
+});
+
+beforeEach(() => {
+  jest.restoreAllMocks();
 });
 
 afterAll(() => {
@@ -58,10 +53,6 @@ describe("/invoices", () => {
     expect(response.statusCode).toBe(201);
 
     expect(response.body).toBeInstanceOf(Object);
-    // expect(response.body.msg).toBe("Invoice Success Create");
-
-    // expect(response.body).toHaveProperty("id", 1);
-    // expect(response.body).toHaveProperty("email", "hahaha@mail.com");
   });
 
   test("200 - success change status ispaid complete", async () => {
@@ -72,9 +63,6 @@ describe("/invoices", () => {
 
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body.msg).toBe("Invoice Success update");
-
-    // expect(response.body).toHaveProperty("id", 1);
-    // expect(response.body).toHaveProperty("email", "hahaha@mail.com");
   });
 
   test("200 - success change status isDelivere complete ", async () => {
@@ -106,13 +94,26 @@ describe("/invoices", () => {
     // expect(response.body).toHaveProperty("");
   });
 
-  test("404 - canoot get invoice by id", async () => {
+  test("404 - canot get invoice by id", async () => {
     let response = await request(app).get("/invoices/100");
     console.log(response.body, "ini get all invoices by id <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<,");
 
     expect(response.statusCode).toBe(404);
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body).toHaveProperty("message", "INVOICE_NOT_FOUND");
+    // expect(response.body).toHaveProperty("");
+  });
+
+  test("500 - cannot get invoice", async () => {
+    // console.log(response.body, "ini get all invoices by id <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<,");
+    jest.spyOn(Invoice, "findByPk").mockRejectedValue("Error");
+    // invoiceController.getInvoiceById = jests.fn().mockRejectedValue("Error");
+
+    const response = await request(app).get("/invoices/1");
+
+    expect(response.statusCode).toBe(500);
+    // expect(response.body).toBeInstanceOf(Object);
+    // expect(response.body).toHaveProperty("message", "Internal server error");
     // expect(response.body).toHaveProperty("");
   });
 
@@ -127,8 +128,8 @@ describe("/invoices", () => {
     expect(response.body[0]).toHaveProperty("UserId", 1);
     expect(response.body[0]).toHaveProperty("DriverId", 1);
     expect(response.body[0]).toHaveProperty("total", 1000);
-    expect(response.body[0]).toHaveProperty("isPaid", "belum");
-    expect(response.body[0]).toHaveProperty("isDelivered", "none");
+    expect(response.body[0]).toHaveProperty("isPaid", "Belum Dibayar");
+    expect(response.body[0]).toHaveProperty("isDelivered", "Belum Dikirim");
     expect(response.body[0]).toHaveProperty("subTotal", 2000);
     expect(response.body[0]).toHaveProperty("shippingCost", 1000);
   });
@@ -146,8 +147,8 @@ describe("/invoices", () => {
     expect(response.body[0]).toHaveProperty("UserId", 1);
     expect(response.body[0]).toHaveProperty("DriverId", 1);
     expect(response.body[0]).toHaveProperty("total", 1000);
-    expect(response.body[0]).toHaveProperty("isPaid", "belum");
-    expect(response.body[0]).toHaveProperty("isDelivered", "none");
+    expect(response.body[0]).toHaveProperty("isPaid", "Belum Dibayar");
+    expect(response.body[0]).toHaveProperty("isDelivered", "Belum Dikirim");
     expect(response.body[0]).toHaveProperty("subTotal", 2000);
     expect(response.body[0]).toHaveProperty("shippingCost", 1000);
   });
@@ -333,29 +334,30 @@ describe("/invoices", () => {
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body).toHaveProperty("message", "INVOICE_NOT_FOUND");
   });
-  test("404 - Get All Invoice By UserId", async () => {
-    // console.log("Ppppppppppppppppppppppppppppppp");
-    console.log(objInvoice);
-    let response = await request(app).get("/invoices/users/99").set("Accept", "application/x-www-form-urlencoded");
+  test("500 - Error Get All Invoice By UserId", async () => {
+    jest.spyOn(Invoice, "findAll").mockRejectedValue("Error");
+
+    let response = await request(app).get("/invoices/users/1").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     console.log(response.body, "<<<<<<<<");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(500);
     expect(response.body).toBeInstanceOf(Object);
-    expect(response.body).toHaveProperty("message", "USER_NOT_FOUND");
+    expect(response.body).toHaveProperty("message", "Internal Server Error");
   });
-  test("404 - Get All Invoice By DriverId", async () => {
+  test("500 - Error Get All Invoice By DriverId", async () => {
+    jest.spyOn(Invoice, "findAll").mockRejectedValue("Error");
     // console.log("Ppppppppppppppppppppppppppppppp");
     console.log(objInvoice);
-    let response = await request(app).get("/invoices/drivers/99").set("Accept", "application/x-www-form-urlencoded");
+    let response = await request(app).get("/invoices/drivers/1").set("Accept", "application/x-www-form-urlencoded");
     // .send(objInvoice);
     // console.log(response);
     // console.log(response.body, "<<<<<<<<");
     console.log(response.body, "<<<<<<<<");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(500);
     expect(response.body).toBeInstanceOf(Object);
-    expect(response.body).toHaveProperty("message", "USER_NOT_FOUND");
+    expect(response.body).toHaveProperty("message", "Internal Server Error");
   });
 
   test("200 - Get All Invoice By DriverId", async () => {

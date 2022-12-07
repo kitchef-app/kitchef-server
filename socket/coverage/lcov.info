@@ -23,7 +23,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:config/socketHandler.js
+SF:config\socketHandler.js
 FN:1,(anonymous_0)
 FN:8,(anonymous_1)
 FN:12,(anonymous_2)

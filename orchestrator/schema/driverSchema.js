@@ -20,6 +20,7 @@ type Driver {
   phoneNumber: String,
   address: String,
   location: location ,
+  token:String
 }
 type location{
   type:String,
@@ -56,6 +57,9 @@ type Query {
 type Mutation {
   registerDriver(driverInput: DriverForm): String
   loginDriver(driverLogin:LoginForm): LoginResult
+  editTokenDriver(token: String,DriverId:Int): String
+
+  
 }
 `;
 
@@ -66,11 +70,11 @@ const resolvers = {
         const { _id } = args;
         console.log(_id, "ini dari args by id");
 
-        const { data } = await axios.get(`${userLocalhost}/users/${_id}`);
+        const { data } = await axios.get(`${userLocalhost}/drivers/${_id}`);
 
         return data;
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
   },
@@ -79,7 +83,10 @@ const resolvers = {
       const { driverInput } = args;
       console.log(driverInput);
       try {
-        const { data } = await axios.post(`${userLocalhost}/users/register`, driverInput);
+        const { data } = await axios.post(
+          `${userLocalhost}/users/register`,
+          driverInput
+        );
 
         console.log(data);
         return `success adding user with email ${data.email}`;
@@ -87,11 +94,33 @@ const resolvers = {
         console.log(error);
       }
     },
+    editTokenDriver: async (_, args) => {
+      const { token, DriverId } = args;
+      // console.log(userInput);
+      console.log(args);
+      try {
+        const { data } = await axios.patch(
+          `${userLocalhost}/drivers/${DriverId}`,
+          {
+            token,
+          }
+        );
+
+        console.log(data);
+        return `success edit`;
+      } catch (error) {
+        // console.log(error);
+      }
+    },
+
     loginDriver: async (_, args) => {
       const { driverLogin } = args;
       console.log(driverLogin);
       try {
-        const { data } = await axios.post(`${userLocalhost}/drivers/login`, driverLogin);
+        const { data } = await axios.post(
+          `${userLocalhost}/drivers/login`,
+          driverLogin
+        );
 
         console.log(data);
         return data;

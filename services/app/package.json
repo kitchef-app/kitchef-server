@@ -8,7 +8,7 @@
     "db:test": "npx sequelize-cli --env=test db:drop && npx sequelize-cli --env=test db:create && npx sequelize-cli --env=test db:migrate",
     "dev": "nodemon bin/www",
     "db:development": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
-    "test": "npx jest --verbose --forceExit --runInBand --setTimeOut=1000 --coverage"
+    "test": "npx jest --verbose --forceExit --runInBand --setTimeOut=1000 --coverage --silent"
   },
   "repository": {
     "type": "git",

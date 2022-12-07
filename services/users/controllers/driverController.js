@@ -47,14 +47,14 @@ class Controller {
         id: foundDriver.id,
       });
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
 
   static async driverRegister(req, res, next) {
-    const { fullName, username, email, password, address, phoneNumber, longitude = 0, latitude = 0 } = req.body;
+    const { fullName, username, email, password, address, phoneNumber, longitude, latitude } = req.body;
     try {
+      console.log(longitude, latitude);
       if (longitude === 0 || latitude === 0 || !longitude || !latitude) throw { name: "INPUT_LOCATION" };
       const createdDriver = await Driver.create({
         fullName,
@@ -78,11 +78,28 @@ class Controller {
   static async findDriverById(req, res, next) {
     const { id } = req.params;
     try {
+      // console.log("ihza");
       const driver = await Driver.findByPk(id);
 
       if (!driver) throw { name: "DATA_NOT_FOUND", data: "driver", id };
 
       res.status(200).json(driver);
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async editTokenDriver(req, res, next) {
+    console.log("lontonf");
+    const { id } = req.params;
+    const { token } = req.body;
+    try {
+      const data = await Driver.findByPk(id);
+
+      if (!data) throw { name: "DATA_NOT_FOUND", id, data: "user" };
+
+      const driver = await Driver.update({ token }, { where: { id } });
+
+      res.status(200).json({ msg: "berhasil update" });
     } catch (error) {
       next(error);
     }

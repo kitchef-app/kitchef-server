@@ -48,6 +48,7 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: { msg: "password cannot be empty" },
         },
       },
+      token: DataTypes.TEXT,
       address: {
         type: DataTypes.TEXT,
         allowNull: false,

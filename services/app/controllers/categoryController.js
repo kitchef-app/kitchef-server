@@ -5,7 +5,9 @@ class Controller {
     try {
       const data = await Category.findAll();
       res.status(200).json(data);
-    } catch (error) {}
+    } catch (error) {
+      next(error);
+    }
   }
 }
 
