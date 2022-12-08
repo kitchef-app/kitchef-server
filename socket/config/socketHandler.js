@@ -7,6 +7,7 @@ module.exports = (io, socket) => {
 
   const joinRoom = (roomName) => {
 	socket.join(roomName)
+  console.log('a user join');
 	io.to(roomName).emit("join-rooms", "success join room")
   }
   const sendLocation = (payload) => {
