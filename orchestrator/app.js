@@ -10,6 +10,7 @@ const paymentsSchema = require("./schema/paymentSchema");
 const productSchema = require("./schema/productSchema");
 
 const server = new ApolloServer({
+  introspection: true,
   typeDefs: [usersSchema.typeDefs, driversSchema.typeDefs, categorySchema.typeDefs, dishSchema.typeDefs, invoicesSchema.typeDefs, paymentsSchema.typeDefs, productSchema.typeDefs],
   resolvers: [usersSchema.resolvers, driversSchema.resolvers, categorySchema.resolvers, dishSchema.resolvers, invoicesSchema.resolvers, paymentsSchema.resolvers, productSchema.resolvers],
 });
